@@ -139,7 +139,7 @@ if (array_key_exists("action", $_REQUEST)) {
             <p>
                 Rename To: <input type="text" name="new_name" />
                 <input type="hidden" name="action" value="rename" />
-                <input type="hidden" name="class" value="<?=$class_id ?>" />
+                <input type="hidden" name="class" value="<?php echo $class_id ?>" />
                 <input type="submit" value="Go!" />
             </p>
         </form>
@@ -175,7 +175,7 @@ if (array_key_exists("action", $_REQUEST)) {
         <p>
                 Input MAC Address: <input type="text" name="mac" />
                 <input type="hidden" name="action" value="add_member" />
-                <input type="hidden" name="class" value="<?=$class_id ?>">
+                <input type="hidden" name="class" value="<?php echo $class_id ?>">
                 <input type="submit" value="Add Member!" />
         </p>
         </form>
@@ -238,7 +238,7 @@ if (array_key_exists("action", $_REQUEST)) {
         </select> as <input type="text" name="target_path" />: 
         <input type="submit" value="Do It!" />
         <input type="hidden" name="action" value="add_file">
-        <input type="hidden" name="class" value="<?=$class_obj->get_id( ); ?>"/>
+        <input type="hidden" name="class" value="<?php echo $class_obj->get_id( ); ?>"/>
     </form>
     </body>
 </html>

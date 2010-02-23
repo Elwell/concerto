@@ -32,19 +32,19 @@
        <tr> 
          <td class='firstrow'><h5>Category Name</h5></td>
          <td class='edit_col firstrow'>
-           <input type="text" id="name" name="category[name]" value="<?=$cat['name']?>">
+           <input type="text" id="name" name="category[name]" value="<?php echo $cat['name']?>">
          </td>
        </tr>
        <tr> 
          <td class='firstrow'><h5>Path</h5><p>Letters, numbers, and hyphens only please.  No special characters or spaces.  Keep it short.</td>
          <td class='edit_col firstrow'>
-           <input type="text" id="name" name="category[path]" value="<?=$cat['path']?>">
+           <input type="text" id="name" name="category[path]" value="<?php echo $cat['path']?>">
          </td>
        </tr>
        <tr> 
          <td class='firstrow'><h5>Layout</h5><p>Should be a filesystem path to a valid Concerto php template from the admin directory.</td>
          <td class='edit_col firstrow'>
-           <input type="text" id="layout" name="category[layout]" value="<?=$cat['layout']?>">
+           <input type="text" id="layout" name="category[layout]" value="<?php echo $cat['layout']?>">
          </td>
        </tr>
 <?php
@@ -59,7 +59,7 @@ if(is_numeric($cat['id'])) {
    if(is_array($pages)) {
       foreach($pages as $page) {
 ?>
-                <option value="<?= $page['id'] ?>"<?php if($cat['default_page']==$page['id']) echo ' SELECTED'; ?>><?=$page['name']?></option>
+                <option value="<?php echo $page['id'] ?>"<?php if($cat['default_page']==$page['id']) echo ' SELECTED'; ?>><?php echo $page['name']?></option>
 <?php
       }
    }

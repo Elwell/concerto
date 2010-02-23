@@ -1,4 +1,4 @@
-<?
+<?php
 /**
  * This file was developed as part of the Concerto digital signage project
  * at RPI.
@@ -180,15 +180,15 @@ function content_selection($criteria){
 function render_html($content_arr, $criteria){
     foreach($content_arr as $content){
     ?>
-<div id="concerto_<?= $content->id ?>" class="concerto">
-	<div class="concerto_name"><?= $content->name ?></div>
-<? if(false===strpos($content->mime_type,'image')){ ?>
-	<div class="concerto_content"><?= $content->content ?></div>
-<? } else { ?>
-	<div class="concerto_content"><img src="index.php?<?= criteria_string($criteria) ?>&select=content&select_id=<?= $content->id ?>&format=raw" alt="<?= htmlspecialchars($content->name) ?>" /></div>
-<? } ?>
+<div id="concerto_<?php echo $content->id ?>" class="concerto">
+	<div class="concerto_name"><?php echo $content->name ?></div>
+<?php if(false===strpos($content->mime_type,'image')){ ?>
+	<div class="concerto_content"><?php echo $content->content ?></div>
+<?php } else { ?>
+	<div class="concerto_content"><img src="index.php?<?php echo criteria_string($criteria) ?>&select=content&select_id=<?php echo $content->id ?>&format=raw" alt="<?php echo htmlspecialchars($content->name) ?>" /></div>
+<?php } ?>
 </div>
-<?
+<?php
     }
 }
 
@@ -208,22 +208,22 @@ function render_rss($content_arr, $criteria){
 ?>
 <rss version="2.0" xmlns:media="http://search.yahoo.com/mrss/" xmlns:dcterms="http://purl.org/dc/terms/">
     <channel>
-        <title><?= htmlspecialchars($feed_title) ?></title>
-        <link>http://<?= $_SERVER['SERVER_NAME'] ?>/<?= ROOT_URL ?></link>
+        <title><?php echo htmlspecialchars($feed_title) ?></title>
+        <link>http://<?php echo $_SERVER['SERVER_NAME'] ?>/<?php echo ROOT_URL ?></link>
         <description>RSS Feed from Concerto API</description>
         <language>en-us</language>
-        <pubDate><?= rssdate("now") ?></pubDate>
+        <pubDate><?php echo rssdate("now") ?></pubDate>
         <generator>Concerto API 0.07</generator>
-        <webMaster><?= SYSTEM_EMAIL ?></webMaster>
+        <webMaster><?php echo SYSTEM_EMAIL ?></webMaster>
         <image>
-            <url><?= 'http://' . $_SERVER['SERVER_NAME'] . ADMIN_BASE_URL ?>/images/conc_logowhitebg_sm.jpg</url>
+            <url><?php echo 'http://' . $_SERVER['SERVER_NAME'] . ADMIN_BASE_URL ?>/images/conc_logowhitebg_sm.jpg</url>
             <title>Concerto</title>
-            <link><?= 'http://' . $_SERVER['SERVER_NAME'] . ADMIN_BASE_URL ?></link>
+            <link><?php echo 'http://' . $_SERVER['SERVER_NAME'] . ADMIN_BASE_URL ?></link>
             <width>700</width>
             <height>185</height>
         </image>
 
-<?  foreach($content_arr as $content){
+<?php  foreach($content_arr as $content){
         $link = 'http://' . $_SERVER['SERVER_NAME'] .  $_SERVER['SCRIPT_NAME'] . '?' . criteria_string($criteria) . '&select_id=' . $content->id . '&select=content&format=rss';
         $link = htmlspecialchars($link);
         $feeds = $content->list_feeds();
@@ -239,39 +239,39 @@ function render_rss($content_arr, $criteria){
         }
 ?>
         <item>
-            <title><?= htmlspecialchars($content->name) ?></title>
-            <link><?= $link ?></link>
-            <description><?= $desc ?></description>
-            <pubDate><?= rssdate($content->submitted) ?></pubDate>
-            <author><?= $user->username ?> (<?= htmlspecialchars($user->name) ?>)</author>
-            <guid><?= $content->id ?></guid>
-<?          foreach($feeds as $feed_obj){
+            <title><?php echo htmlspecialchars($content->name) ?></title>
+            <link><?php echo $link ?></link>
+            <description><?php echo $desc ?></description>
+            <pubDate><?php echo rssdate($content->submitted) ?></pubDate>
+            <author><?php echo $user->username ?> (<?php echo htmlspecialchars($user->name) ?>)</author>
+            <guid><?php echo $content->id ?></guid>
+<?php          foreach($feeds as $feed_obj){
                 if($feed_obj['moderation_flag'] == 1 && $feed_obj['feed']->type != 3){
                     $feed = $feed_obj['feed'];
                     $feed_link = 'http://' . $_SERVER['SERVER_NAME'] .  $_SERVER['SCRIPT_NAME'] . '?' . criteria_string($criteria) . "&select=feed&select_id={$feed->id}&format=rss";
 ?>
-            <category domain="<?= htmlspecialchars($feed_link) ?>"><?= htmlspecialchars($feed->name) ?></category>
-<?
+            <category domain="<?php echo htmlspecialchars($feed_link) ?>"><?php echo htmlspecialchars($feed->name) ?></category>
+<?php
                 }
             }
             if(strpos($content->mime_type,'image') !== false){
 ?>
-            <media:content url="<?= htmlspecialchars($raw_link) ?>" type="<?= $content->mime_type ?>" expression="full" />
-            <media:title type="plain"><?= htmlspecialchars($content->name) ?></media:title>
-            <media:thumbnail url="<?= htmlspecialchars($rss_link) ?>" width="100" height="100"/>
-<?
+            <media:content url="<?php echo htmlspecialchars($raw_link) ?>" type="<?php echo $content->mime_type ?>" expression="full" />
+            <media:title type="plain"><?php echo htmlspecialchars($content->name) ?></media:title>
+            <media:thumbnail url="<?php echo htmlspecialchars($rss_link) ?>" width="100" height="100"/>
+<?php
             }
 ?>
             <dcterms:valid>
-                start=<?= w3date($content->start_time) ?>;
-                end=<?= w3date($content->end_time) ?>;
+                start=<?php echo w3date($content->start_time) ?>;
+                end=<?php echo w3date($content->end_time) ?>;
                 scheme=W3C-DTF
             </dcterms:valid>
         </item>
-<?  } ?>
+<?php  } ?>
     </channel>
 </rss>
-<?
+<?php
 }
 
 function render_raw($content_arr, $criteria){
@@ -348,34 +348,34 @@ function system_info(){
 ?>
 
 <feeds>
-<?
+<?php
     while($row = sql_row_keyed($res, $i)){
 ?>
     <feed>
-        <id><?= $row['id'] ?></id>
-        <name><?= $row['name'] ?></name>
+        <id><?php echo $row['id'] ?></id>
+        <name><?php echo $row['name'] ?></name>
     </feed>
-<?
+<?php
         $i++;
     }
 ?>
 </feeds>
-<?
+<?php
     $sql = "SELECT name FROM type";
     $res = sql_query($sql);
     $i = 0;
 ?>
 <types>
-<?
+<?php
     while($row = sql_row_keyed($res, $i)){
 ?>
-    <type><?= $row['name'] ?></type>
-<?
+    <type><?php echo $row['name'] ?></type>
+<?php
         $i++;
     }
 ?>
 </types>
-<?
+<?php
 }
 
 //Function to generate W3-DTF friendly date.  Complies with some RFC

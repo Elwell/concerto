@@ -36,7 +36,7 @@ $(function()
 		event.preventDefault();
 	if($(this).data("news"))
 		return;
-      $.post("<?= ADMIN_URL ?>/users/notifications/<?= $_SESSION['user']->username ?>", {'start': $("#news_expand").data('items'), 'num': 5}, function(data) {
+      $.post("<?php echo ADMIN_URL ?>/users/notifications/<?php echo $_SESSION['user']->username ?>", {'start': $("#news_expand").data('items'), 'num': 5}, function(data) {
          $("<div>").css("overflow", "hidden").html(data).hide().appendTo($("#news_expand")).slideDown("slow");
                $("#news_expand").data('items',$("#news_expand").data('items')+5);
                if( data == "" ) {
@@ -63,10 +63,10 @@ $(function()
 //--></script>
 <div style="float:left; width:49%;">
 	<div class="roundcont">
-	  <div class="roundtop"><span class="rt"><img src="<?= ADMIN_BASE_URL ?>/images/blsp.gif" height="6" width="1" alt="" /></span></div>
+	  <div class="roundtop"><span class="rt"><img src="<?php echo ADMIN_BASE_URL ?>/images/blsp.gif" height="6" width="1" alt="" /></span></div>
 	  <div class="roundcont_main">
 	    <div>
-	    	<div style="float:right; text-align:right; width:230px;"><a href="http://concerto.rpi.edu/screensaver"><img src="<?= ADMIN_BASE_URL ?>/images/wall/ss-announce.jpg" border="0" alt="" /></a></div>
+	    	<div style="float:right; text-align:right; width:230px;"><a href="http://concerto.rpi.edu/screensaver"><img src="<?php echo ADMIN_BASE_URL ?>/images/wall/ss-announce.jpg" border="0" alt="" /></a></div>
 	    	<h1><a href="http://concerto.rpi.edu/screensaver">Get Concerto Screensaver</a></h1>
 				<br />
 	    	<p>Turn your PC into a portal to campus life.</p>
@@ -74,32 +74,32 @@ $(function()
 	    	<div style="clear:both;"></div>
 	    </div>
 	  </div>
-	  <div class="roundbottom"><span class="rb"><img src="<?= ADMIN_BASE_URL ?>/images/blsp.gif" height="6" width="1" alt="" /></span></div>
+	  <div class="roundbottom"><span class="rb"><img src="<?php echo ADMIN_BASE_URL ?>/images/blsp.gif" height="6" width="1" alt="" /></span></div>
 	</div>
 </div>
 <div style="float:right; width:49%;">
 	<div class="roundcont">
-	  <div class="roundtop"><span class="rt"><img src="<?= ADMIN_BASE_URL ?>/images/blsp.gif" height="6" width="1" alt="" /></span></div>
+	  <div class="roundtop"><span class="rt"><img src="<?php echo ADMIN_BASE_URL ?>/images/blsp.gif" height="6" width="1" alt="" /></span></div>
 	  <div class="roundcont_main">
 	    <div>
-	    	<div style="float:right; text-align:right; width:230px;"><a href="<?= ADMIN_URL ?>/wall"><img src="<?= ADMIN_BASE_URL ?>/images/wall/wall-announce.jpg" border="0" alt="" /></a></div>
-	    	<h1><a href="<?= ADMIN_URL ?>/wall">Visit Concerto Wall</a></h1>
+	    	<div style="float:right; text-align:right; width:230px;"><a href="<?php echo ADMIN_URL ?>/wall"><img src="<?php echo ADMIN_BASE_URL ?>/images/wall/wall-announce.jpg" border="0" alt="" /></a></div>
+	    	<h1><a href="<?php echo ADMIN_URL ?>/wall">Visit Concerto Wall</a></h1>
 				<br />
 	    	<p>Explore Concerto content in a new grid view.</p>
 	    	<br /><br />
 	    	<div style="clear:both;"></div>
 	    </div>
 	  </div>
-	  <div class="roundbottom"><span class="rb"><img src="<?= ADMIN_BASE_URL ?>/images/blsp.gif" height="6" width="1" alt="" /></span></div>
+	  <div class="roundbottom"><span class="rb"><img src="<?php echo ADMIN_BASE_URL ?>/images/blsp.gif" height="6" width="1" alt="" /></span></div>
 	</div>
 </div>
 <br clear="both" />
 
 <div class="roundcont newsfeed">
-  <div class="roundtop"><span class="rt"><img src="<?= ADMIN_BASE_URL ?>/images/blsp.gif" height="6" width="1" alt="" /></span></div>
+  <div class="roundtop"><span class="rt"><img src="<?php echo ADMIN_BASE_URL ?>/images/blsp.gif" height="6" width="1" alt="" /></span></div>
   <div class="roundcont_main">
     <div style="text-align:right; float:right; width:85px;">
-    	<a href="<?= ADMIN_URL ?>/users/newsfeed/<?= userName() ?>"><span class="buttonsel"><div class="buttonleft"><img src="<?= ADMIN_BASE_URL ?>/images/buttonsel_left.gif" border="0" alt="" /></div><div class="buttonmid"><div class="buttonmid_padding">View All</div></div><div class="buttonright" style="width:10px;"><img src="<?= ADMIN_BASE_URL ?>/images/buttonsel_right.gif" border="0" alt="" /></div></span></a>
+    	<a href="<?php echo ADMIN_URL ?>/users/newsfeed/<?php echo userName() ?>"><span class="buttonsel"><div class="buttonleft"><img src="<?php echo ADMIN_BASE_URL ?>/images/buttonsel_left.gif" border="0" alt="" /></div><div class="buttonmid"><div class="buttonmid_padding">View All</div></div><div class="buttonright" style="width:10px;"><img src="<?php echo ADMIN_BASE_URL ?>/images/buttonsel_right.gif" border="0" alt="" /></div></span></a>
     </div>
     <h1>News Feed</h1>
     <div id="news_expand">
@@ -107,7 +107,7 @@ $(function()
     if(is_array($this->notifications)) {
        foreach($this->notifications as $newsfeed) {
     ?>
-    	<p class="<?= $newsfeed->type ?>_<?= $newsfeed->msg ?>"><?= $newsfeed->text ?><span class="datesub"><?= date('M j', $newsfeed->timestamp) ?></span>
+    	<p class="<?php echo $newsfeed->type ?>_<?php echo $newsfeed->msg ?>"><?php echo $newsfeed->text ?><span class="datesub"><?php echo date('M j', $newsfeed->timestamp) ?></span>
         <?php
           if($newsfeed->has_extra){
             echo '<br/><span class="newsfeed_reason">'.$newsfeed->additional.'</span>';
@@ -120,47 +120,47 @@ $(function()
     </div>
   </div>
   <span style="display:none;" id="seemore"><span id="seemore-inner">View more...</span></span>
-  <noscript><div class="roundbottom"><span class="rb"><img src="<?= ADMIN_BASE_URL ?>/images/blsp.gif" height="6" width="1" alt="" /></span></div></noscript>
+  <noscript><div class="roundbottom"><span class="rb"><img src="<?php echo ADMIN_BASE_URL ?>/images/blsp.gif" height="6" width="1" alt="" /></span></div></noscript>
 </div>
 
 <div class="roundcont">
-  <div class="roundtop"><span class="rt"><img src="<?= ADMIN_BASE_URL ?>/images/blsp.gif" height="6" width="1" alt="" /></span></div>
+  <div class="roundtop"><span class="rt"><img src="<?php echo ADMIN_BASE_URL ?>/images/blsp.gif" height="6" width="1" alt="" /></span></div>
   <div class="roundcont_main">
     <div style="float:left; width:75%;">
     	<br />
-    	<p>Concerto is currently at <b>Version <?= CONCERTO_VERSION ?></b>.  For more information, <a href="<?= ADMIN_URL ?>/pages/show/docs/14">check out the release notes.</a></p>
+    	<p>Concerto is currently at <b>Version <?php echo CONCERTO_VERSION ?></b>.  For more information, <a href="<?php echo ADMIN_URL ?>/pages/show/docs/14">check out the release notes.</a></p>
     </div>
-    <div style="float:right; text-align:right; width:23%;"><img src="<?= ADMIN_BASE_URL ?>/images/latest_version.gif" alt="" /></div>
+    <div style="float:right; text-align:right; width:23%;"><img src="<?php echo ADMIN_BASE_URL ?>/images/latest_version.gif" alt="" /></div>
     <div style="clear:both;"></div>
   </div>
-  <div class="roundbottom"><span class="rb"><img src="<?=  ADMIN_BASE_URL ?>/images/blsp.gif" height="6" width="1" alt="" /></span></div>
+  <div class="roundbottom"><span class="rb"><img src="<?php echo  ADMIN_BASE_URL ?>/images/blsp.gif" height="6" width="1" alt="" /></span></div>
 </div>
 
 <div class="roundcont">
-  <div class="roundtop"><span class="rt"><img src="<?= ADMIN_BASE_URL ?>/images/blsp.gif" height="6" width="1" alt="" /></span></div>
+  <div class="roundtop"><span class="rt"><img src="<?php echo ADMIN_BASE_URL ?>/images/blsp.gif" height="6" width="1" alt="" /></span></div>
   <div class="roundcont_main">
     <h1>Operational Status</h1>
     <table style="text-align:center; font-size:1.3em; font-weight:bold;" cellpadding="6" cellspacing="0" width="100%">
     	<tr>
     		<td valign="middle" width="4%">
-    			<div class="screenstat" style="width:100%;"><p><a href="#" id="trigger"><img id="plus_icon" style="display:none;" src="<?= ADMIN_BASE_URL ?>images/round_plus.gif" alt="" border="0" /><img id="minus_icon" style="display:none;" src="<?= ADMIN_BASE_URL ?>images/round_minus.gif" alt="" border="0" /></a></p></div>
+    			<div class="screenstat" style="width:100%;"><p><a href="#" id="trigger"><img id="plus_icon" style="display:none;" src="<?php echo ADMIN_BASE_URL ?>images/round_plus.gif" alt="" border="0" /><img id="minus_icon" style="display:none;" src="<?php echo ADMIN_BASE_URL ?>images/round_minus.gif" alt="" border="0" /></a></p></div>
     		</td>
     		<td valign="middle" width="21%">
-    			<div class="screenstat" style="width:90%; margin-right:auto; margin-left:auto; border-right:solid 1px #666;"><p><a href="<?= ADMIN_URL ?>/screens/"><?php echo $this->screen_stats[3] ?> screens</a></p></div>
+    			<div class="screenstat" style="width:90%; margin-right:auto; margin-left:auto; border-right:solid 1px #666;"><p><a href="<?php echo ADMIN_URL ?>/screens/"><?php echo $this->screen_stats[3] ?> screens</a></p></div>
     		</td>
     		<td valign="middle" width="25%" style="color:green;">
     			<div class="screenstat"><p><?php echo $this->screen_stats[0] ?></p></div>
-    			<div class="screenstat"><img src="<?= ADMIN_BASE_URL ?>images/screen_43_on_sm.gif" alt="" /></div>
+    			<div class="screenstat"><img src="<?php echo ADMIN_BASE_URL ?>images/screen_43_on_sm.gif" alt="" /></div>
     			<div class="screenstat"><p>online</p></div>
     		</td>
     		<td valign="middle" style="color:#aa0;" width="25%">
     			<div class="screenstat"><p><?php echo $this->screen_stats[2]; ?></p></div>
-    			<div class="screenstat"><img src="<?= ADMIN_BASE_URL ?>images/screen_43_asleep_sm.gif" alt="" /></div>
+    			<div class="screenstat"><img src="<?php echo ADMIN_BASE_URL ?>images/screen_43_asleep_sm.gif" alt="" /></div>
     			<div class="screenstat"><p>asleep</p></div>
     		</td>
     		<td valign="middle" style="color:red;" width="25%">
     			<div class="screenstat"><p><?php echo $this->screen_stats[1]; ?></p></div>
-    			<div class="screenstat"><img src="<?= ADMIN_BASE_URL ?>images/screen_43_off_sm.gif" alt="" /></div>
+    			<div class="screenstat"><img src="<?php echo ADMIN_BASE_URL ?>images/screen_43_off_sm.gif" alt="" /></div>
     			<div class="screenstat"><p>offline</p></div>
     		</td>
     	</tr>
@@ -219,9 +219,9 @@ $(function()
 	?>
 				<tr valign="middle">
 					<td class="icon" style="text-align:center; width:55px;"><div style="display:inline; margin-left:12px;width:50px; text-align:center">
-						<a href="<?= url_for('screens','show',$screen->id)?>"><img height="35" class="icon" src="<?= ADMIN_BASE_URL ?>images/<?= $scrimg ?>" alt="<?= $status ?>" title="<?= $status ?>" /></a>
+						<a href="<?php echo url_for('screens','show',$screen->id)?>"><img height="35" class="icon" src="<?php echo ADMIN_BASE_URL ?>images/<?php echo $scrimg ?>" alt="<?php echo $status ?>" title="<?php echo $status ?>" /></a>
 					</div></td>
-					<td><span class="emph"><a href="<?= url_for('screens','show',$screen->id)?>"><?=$screen->name?></a></span>, a <?=$screen->width.'x'.$screen->height?> display in <b><?=$screen->location?></b></td>
+					<td><span class="emph"><a href="<?php echo url_for('screens','show',$screen->id)?>"><?php echo $screen->name?></a></span>, a <?php echo $screen->width.'x'.$screen->height?> display in <b><?php echo $screen->location?></b></td>
 				</tr>
 	<?php
 	}
@@ -231,5 +231,5 @@ $(function()
     </div>
 
   </div>
-  <div class="roundbottom"><span class="rb"><img src="<?= ADMIN_BASE_URL ?>/images/blsp.gif" height="6" width="1" alt="" /></span></div>
+  <div class="roundbottom"><span class="rb"><img src="<?php echo ADMIN_BASE_URL ?>/images/blsp.gif" height="6" width="1" alt="" /></span></div>
 </div>

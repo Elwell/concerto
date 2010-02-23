@@ -48,7 +48,7 @@
                 var feed_name = $(anchor).find("select.add_feed option:selected").remove().text();
                 $(anchor).find("li.no_sub").remove();
                 $(anchor).find("ul")
-                    .append('<li><select name="content[freq][' + field_id + '][' + feed_id + ']"><option value="1">Very Seldom</option><option value="2">Occasionally</option><option value="3" selected="selected">Regularly</option><option value="4">Frequently</option><option value="5">Very Often</option></select><input type="hidden" name="System Time & Date" value="0" /> display content from <a href="<?=ADMIN_URL?>/feeds/show/' + feed_id + '" title="'+feed_desc+'">' + feed_name + '</a> (<a class="remove_feed" href="#">remove</a>)</li>')
+                    .append('<li><select name="content[freq][' + field_id + '][' + feed_id + ']"><option value="1">Very Seldom</option><option value="2">Occasionally</option><option value="3" selected="selected">Regularly</option><option value="4">Frequently</option><option value="5">Very Often</option></select><input type="hidden" name="System Time & Date" value="0" /> display content from <a href="<?php echo ADMIN_URL?>/feeds/show/' + feed_id + '" title="'+feed_desc+'">' + feed_name + '</a> (<a class="remove_feed" href="#">remove</a>)</li>')
                     .find("a.remove_feed").click(remove_feed);
             }
             return false;
@@ -58,12 +58,12 @@
     });
 })(jQuery);
 //--></script>
-<img src="<?=ADMIN_URL?>/templates/preview/<?=$this->templateobj->id?>" style=" border: 1px solid #aaa; display:inline;margin:25px;float:left" alt="preview" />
+<img src="<?php echo ADMIN_URL?>/templates/preview/<?php echo $this->templateobj->id?>" style=" border: 1px solid #aaa; display:inline;margin:25px;float:left" alt="preview" />
 <div style=" height:260px; top:0px; float:left; margin-left:30px;">
    <p style="width:280px; bottom:150px; padding:30px; margin-top:50px; background:url(../images/lightblue_bg.gif); border:1px solid #aaa">Your screen is divided up into several areas, called <b>fields</b>, each of which can display different types of content.  Use these controls to select feeds (categories of content, i.e. <i>Student Union</i>, which contains student clubs' content) to place in each field, and how often to display each.</p>
 </div>
 <br clear="left" />
-<form method="post" action="<?=ADMIN_URL?>/screens/subscribe/<?=$this->screen->id?>">
+<form method="post" action="<?php echo ADMIN_URL?>/screens/subscribe/<?php echo $this->screen->id?>">
 <?php
 $fields_list=$this->screen->list_fields();
 if(is_array($fields_list)){
@@ -71,10 +71,10 @@ foreach($fields_list as $field) {
 ?>
 
 <div class="roundcont">
-  <div class="roundtop"><span class="rt"><img src="<? echo ADMIN_BASE_URL ?>/images/blsp.gif" height="6" width="1" alt="" /></span></div>
+  <div class="roundtop"><span class="rt"><img src="<?php echo ADMIN_BASE_URL ?>/images/blsp.gif" height="6" width="1" alt="" /></span></div>
   <div class="roundcont_main">
-    <input type="hidden" name="field" value="<?=$field->id?>" />
-    <h1><span class="emph"><? echo $field->name ?></span> (Field)</h1>
+    <input type="hidden" name="field" value="<?php echo $field->id?>" />
+    <h1><span class="emph"><?php echo $field->name ?></span> (Field)</h1>
     
     <ul>
 <?php
@@ -92,7 +92,7 @@ if(is_array($positions)) {
       echo '<option value="5"'.($value==5?' selected="selected"':'').'>Very Often</option>';
       echo '</select>';
       echo '<input type="hidden" name="'.htmlspecialchars($feed->name).'" value="'.$feed->id.'" />';
-?> display content from <a href="<?=ADMIN_URL.'/feeds/show/'.$feed->id?>" title="<?=htmlspecialchars($feed->description)?>"><?=htmlspecialchars($feed->name)?></a> (<a class="remove_feed" href="#">remove</a>)</li>
+?> display content from <a href="<?php echo ADMIN_URL.'/feeds/show/'.$feed->id?>" title="<?php echo htmlspecialchars($feed->description)?>"><?php echo htmlspecialchars($feed->name)?></a> (<a class="remove_feed" href="#">remove</a>)</li>
 <?php
    }
 } else echo '    <li class="no_sub">(no current subscriptions)</li>'; ?>
@@ -101,15 +101,15 @@ if(is_array($positions)) {
 	  Add a feed to this field: 
 	  <select class="add_feed">
           <option value="" selected="selected" title="Select a feed"></option>
-     <? foreach($field->avail_feeds() as $feed) { ?>
-     <option value="<?=$feed->id?>" title="<?=htmlspecialchars($feed->description)?>"><?=htmlspecialchars($feed->name)?></option>
-     <? } ?>
+     <?php foreach($field->avail_feeds() as $feed) { ?>
+     <option value="<?php echo $feed->id?>" title="<?php echo htmlspecialchars($feed->description)?>"><?php echo htmlspecialchars($feed->name)?></option>
+     <?php } ?>
 	  </select>
      <a class="add_feed" href="#">Add</a>
 	 </p>
 
   </div>
-  <div class="roundbottom"><span class="rb"><img src="<? echo ADMIN_BASE_URL ?>/images/blsp.gif" height="6" width="1" alt="" /></span></div>
+  <div class="roundbottom"><span class="rb"><img src="<?php echo ADMIN_BASE_URL ?>/images/blsp.gif" height="6" width="1" alt="" /></span></div>
 </div>
 <?php
 }

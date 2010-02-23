@@ -32,7 +32,7 @@
        <tr> 
          <td class='firstrow'><h5>Page Name</h5></td>
          <td class='edit_col firstrow'>
-           <input type="text" id="name" name="page[name]" value="<?=$page['name']?>">
+           <input type="text" id="name" name="page[name]" value="<?php echo $page['name']?>">
          </td>
        </tr>
        <tr>
@@ -43,28 +43,28 @@
                    if(is_array($cats))
                      foreach($cats as $cat) {
              ?>
-                <option value="<?= $cat['id'] ?>"<?php if($page['page_category_id']==$cat['id']) echo ' SELECTED'; ?>><?=$cat['name']?></option>
+                <option value="<?php echo $cat['id'] ?>"<?php if($page['page_category_id']==$cat['id']) echo ' SELECTED'; ?>><?php echo $cat['name']?></option>
              <?php   } ?>
              </select></td>
        </tr>
        <tr>
          <td><h5>Show in menu</h5></td>
          <td><select name="page[in_menu]">
-            <option value="0"<?=$page['in_menu']?"":" selected"?>>No</option>
-            <option value="1"<?=$page['in_menu']?" selected":""?>>Yes</option>
+            <option value="0"<?php echo $page['in_menu']?"":" selected"?>>No</option>
+            <option value="1"<?php echo $page['in_menu']?" selected":""?>>Yes</option>
           </select></td>
        </tr>
        <tr>
          <td><h5>Show feedback form</h5></td>
          <td><select name="page[feedback]">
-            <option value="0"<?=$page['get_feedback']?"":" selected"?>>No</option>
-            <option value="1"<?=$page['get_feedback']?" selected":""?>>Yes</option>
+            <option value="0"<?php echo $page['get_feedback']?"":" selected"?>>No</option>
+            <option value="1"<?php echo $page['get_feedback']?" selected":""?>>Yes</option>
           </select></td>
        </tr>
        <tr> 
          <td class='firstrow'><h5>Page Content (HTML)</h5></td>
          <td class='edit_col firstrow'>
-           <textarea cols="80" rows="25" name="page[content]"><?=$page['content']?></textarea>
+           <textarea cols="80" rows="25" name="page[content]"><?php echo $page['content']?></textarea>
          </td>
        </tr>
      </table>

@@ -24,19 +24,19 @@
  * @version      $Revision$
  */
 ?><div style="height:220px; width:330px; float:left;">
-	<img src="<?= ADMIN_BASE_URL ?>images/ticker_icon.jpg" alt="" />
+	<img src="<?php echo ADMIN_BASE_URL ?>images/ticker_icon.jpg" alt="" />
 </div>
 <h1 class="addcontent">Add Ticker Text</h1>
 <h2>Fill in these details to post a text announcement to Concerto.</h2>
 <div style="clear:both;"></div>
-<form method="post" action="<?=ADMIN_URL?>/content/create">
+<form method="post" action="<?php echo ADMIN_URL?>/content/create">
 <br /><br /><table class='edit_win' style="margin-top:-18px" cellpadding='6' cellspacing='0'>
   <tr>
   <td><h5>Ticker Text</h5><p><b>Enter the text announcement or message that will be displayed.</b></p></td>
   <td class="edit_col">
     <textarea name="content[content]" id="content" rows="3" cols="40"></textarea>
     <input name="content[upload_type]" value="text" type="hidden" />
-    <p id="content_count" class="content_msg">Please limit your ticker to <?= TICKER_LIMIT ?> characters of plain text.</p>
+    <p id="content_count" class="content_msg">Please limit your ticker to <?php echo TICKER_LIMIT ?> characters of plain text.</p>
   </td>
   </tr>
 </table>

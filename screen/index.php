@@ -47,7 +47,7 @@ if($screenId < 0){
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="signage.js"></script>
 <script type="text/javascript"><!--
-$(document).ready(function(){$.signage(<?= $screenId ?>);});//--></script>
+$(document).ready(function(){$.signage(<?php echo $screenId ?>);});//--></script>
 </head>
 <body style="overflow: hidden">
 </body>

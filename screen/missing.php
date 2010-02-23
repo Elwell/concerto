@@ -80,7 +80,7 @@ text-align: center;
 				<tr><td>&nbsp;</td></tr>
 				<tr>
 					<td>
-						The MAC address <?= $mac ?> cannot be found	in the database.<br/>
+						The MAC address <?php echo $mac ?> cannot be found	in the database.<br/>
 						Please verify	that this screen has been added to the system.
 					</td>
 				</tr>

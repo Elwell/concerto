@@ -35,13 +35,13 @@
        <tr>
          <td><h5>Title</h5><p>Enter some words that describe this piece of content to others.</p></td>
          <td colspan="2" class='edit_col'>
-           <input type="text" class="extended" name="content[name]" value="<?=$content->name?>" />
+           <input type="text" class="extended" name="content[name]" value="<?php echo $content->name?>" />
          </td>
        </tr>
        <tr>
          <td><h5>Start Date</h5><p>When should this piece of content start to be displayed on Concerto?</p></td>
          <td>
-           <input type="text" class="start_date" name="content[start_date]" value="<?=$content->start_time?>" />
+           <input type="text" class="start_date" name="content[start_date]" value="<?php echo $content->start_time?>" />
            <p class="start_time_msg">Starting at the beginning of the day (12:00am)</p>
          </td>
          <td width="30%" style="text-align:right;"><a class="click_start_time" href="#">Set a different start time</a>
@@ -75,7 +75,7 @@
        <tr>
          <td><h5>End Date</h5><p>When should this piece of content expire?  This might be the date of the event you are advertising.</p></td>
          <td>
-           <input type="text" class="end_date" name="content[end_date]" value="<?=$content->end_time?>" />
+           <input type="text" class="end_date" name="content[end_date]" value="<?php echo $content->end_time?>" />
            <p class="end_time_msg">Showing through the end of the day (11:59pm)</p>
          </td>
          <td width="30%" style="text-align:right;"><a class="click_end_time" href="#">Set a different end time</a>
@@ -109,15 +109,15 @@
        <tr>
          <td><h5>Duration</h5><p>For how long should this piece of content be displayed on a screen?</p></td>
          <td>
-           <div class="duration_msg">Default is <?=DEFAULT_DURATION?> seconds</div>
-           <div class="duration_div" style="display:none"><input type="text" size="2" name="content[duration]" value="<?= $content->duration?$content->end_time:DEFAULT_DURATION?>" /> &nbsp;seconds</div>
+           <div class="duration_msg">Default is <?php echo DEFAULT_DURATION?> seconds</div>
+           <div class="duration_div" style="display:none"><input type="text" size="2" name="content[duration]" value="<?php echo $content->duration?$content->end_time:DEFAULT_DURATION?>" /> &nbsp;seconds</div>
          </td>
          <td width="30%" style="text-align:right;"><a class="click_duration" href="#">Set a different duration</a>
          </td>
        </tr>
      </table>
      <br /><br />
-     <h2>Not sure what feeds are?  <a TARGET="_blank" href="<?= ADMIN_URL ?>/pages/show/docs/23">Read this first!</a></h2>
+     <h2>Not sure what feeds are?  <a TARGET="_blank" href="<?php echo ADMIN_URL ?>/pages/show/docs/23">Read this first!</a></h2>
      <table class='edit_win' cellpadding='6' cellspacing='0'>
        <tr>
          <td>
@@ -143,10 +143,10 @@ foreach ($this->feeds as $arr) {
     $scrcnt = count($screens);
 ?>
                  <option class="feedopt"
-                   title="<?=$feed->description ? $feed->description : ' '?>   Displays on <?=$scrcnt?> screen<?= $scrcnt!=1 ? 's' : ''?><?= (count($screens)>0) ? ': '.join(', ',$screens) : '. ' ?>" 
-                   value="<?=$feed->id?>"><?=htmlspecialchars($feed->name)?></option>
+                   title="<?php echo $feed->description ? $feed->description : ' '?>   Displays on <?php echo $scrcnt?> screen<?php echo $scrcnt!=1 ? 's' : ''?><?php echo (count($screens)>0) ? ': '.join(', ',$screens) : '. ' ?>" 
+                   value="<?php echo $feed->id?>"><?php echo htmlspecialchars($feed->name)?></option>
 
-<? } ?>
+<?php } ?>
                </select>
              </div>
              <div style="float:right; width:58%;" class="feeddesc"><p> </p></div>

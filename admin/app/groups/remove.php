@@ -23,7 +23,7 @@
  * @license      GPLv2, see www.gnu.org/licenses/gpl-2.0.html
  * @version      $Revision$
  */
-?><form method="POST" action="<?=ADMIN_URL?>/groups/unsubscribe/<?=$this->group->id?>">
+?><form method="POST" action="<?php echo ADMIN_URL?>/groups/unsubscribe/<?php echo $this->group->id?>">
 <select id="user" name="user">
 <option value=""> </option>
 <?php

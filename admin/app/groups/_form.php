@@ -33,7 +33,7 @@
        <tr> 
          <td class='firstrow'><h5>Group Name</h5></td>
          <td class='edit_col firstrow'>
-           <input type="text" id="name" name="group[name]" value="<?=$group->name?>">
+           <input type="text" id="name" name="group[name]" value="<?php echo $group->name?>">
          </td>
        </tr>
      </table>

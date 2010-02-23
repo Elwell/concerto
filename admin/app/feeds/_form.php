@@ -36,13 +36,13 @@
        <tr> 
          <td class='firstrow'><h5>Feed Name</h5></td>
          <td class='edit_col firstrow'>
-           <input type="text" id="name" name="feed[name]" value="<?=$feed->name?>">
+           <input type="text" id="name" name="feed[name]" value="<?php echo $feed->name?>">
          </td>
        </tr>
        <tr> 
          <td class='firstrow'><h5>Description</h5></td>
          <td class='edit_col firstrow'>
-           <input type="text" id="description" name="feed[description]" value="<?=$feed->description?>">
+           <input type="text" id="description" name="feed[description]" value="<?php echo $feed->description?>">
          </td>
        </tr>
        <tr>
@@ -53,7 +53,7 @@
                    if(is_array($groups))
                      foreach($groups as $group) {
              ?>
-                <option value="<?= $group['id'] ?>"<?php if($feed->group_id==$group['id']) echo ' SELECTED'; ?>><?=$group['name']?></option>
+                <option value="<?php echo $group['id'] ?>"<?php if($feed->group_id==$group['id']) echo ' SELECTED'; ?>><?php echo $group['name']?></option>
              <?php   } ?>
              </select></td>
        </tr>
@@ -67,7 +67,7 @@
                   $types[3] = "Private";
                   foreach($types as $t_id => $t_name) {
              ?>
-                <option value="<?= $t_id ?>"<?php if($feed->type==$t_id) echo ' SELECTED'; ?>><?=$t_name?></option>
+                <option value="<?php echo $t_id ?>"<?php if($feed->type==$t_id) echo ' SELECTED'; ?>><?php echo $t_name?></option>
              <?php   } ?>
              </select> <?php } ?></td>
        </tr>

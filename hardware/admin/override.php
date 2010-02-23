@@ -78,7 +78,7 @@ if (array_key_exists("action", $_REQUEST)) {
             <input type="hidden" name="action" value="write" />
             <input type="hidden" name="class"
                 value="<?php print $class_obj->get_id( ) ?>" />
-            <input type="hidden" name="path" value="<?=$path?>" />
+            <input type="hidden" name="path" value="<?php echo $path?>" />
             <p>
                 <textarea name="text" style="width: 100%; height: 80%"><?php print $class_obj->get_override($path); ?></textarea>
             </p>

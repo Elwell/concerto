@@ -39,7 +39,7 @@ $(function() {
 function loadFeed(id, feedname) {
 	$.ajax({
 		type: "GET",
-		url: "<?= ADMIN_URL ?>/wall/feedgrid/"+id+"?ajax=1",
+		url: "<?php echo ADMIN_URL ?>/wall/feedgrid/"+id+"?ajax=1",
 		success: function(data){
 				$('#wall_feed_insert').empty();
 				$("#progressbar").progressbar({ value: 0 });
@@ -108,9 +108,9 @@ $(document).ready(function() {
     <div id="panel">
       <div id="panel_contents"> </div>
         <div id="UIWall_feedsel">
-         <? if(!is_array($this->feeds) || empty($this->feeds)) { ?>
+         <?php if(!is_array($this->feeds) || empty($this->feeds)) { ?>
            Sorry, there are no browsable feeds in the system at this time.
-          <?
+          <?php
           } else {
             foreach($this->feeds as $id => $feed ) {
             $name = htmlspecialchars($feed['name']);
@@ -118,8 +118,8 @@ $(document).ready(function() {
               $name = substr($name, 0, 26) . '...';
             }
           ?>
-             <div class="UIWall_feedbutton" style="position:relative;"><a href="<?= ADMIN_URL ?>/wall/feedgrid/<?= $id ?>" onclick="loadFeed(<?= $id ?>, '<?= $name ?>'); return false;" title="<?= $name ?>"><div class="UIWall_contentnum"><?= $feed['count'] ?></div><?= $name ?></a></div>
-          <? } 
+             <div class="UIWall_feedbutton" style="position:relative;"><a href="<?php echo ADMIN_URL ?>/wall/feedgrid/<?php echo $id ?>" onclick="loadFeed(<?php echo $id ?>, '<?php echo $name ?>'); return false;" title="<?php echo $name ?>"><div class="UIWall_contentnum"><?php echo $feed['count'] ?></div><?php echo $name ?></a></div>
+          <?php } 
            } ?>
             <br clear="both" />
         </div>
@@ -129,13 +129,13 @@ $(document).ready(function() {
         <div class="panel_button" style="display: visible;">
           <a href="#">
             <h1 class="feedsel_title">Click to Select Feed</h1>
-            <img src="<?= ADMIN_BASE_URL ?>images/wall/pulldown_arrow.png" alt="" />
+            <img src="<?php echo ADMIN_BASE_URL ?>images/wall/pulldown_arrow.png" alt="" />
           </a>
         </div>
         <div class="panel_button" id="hide_button" style="display: none;">
           <a href="#">
             <h1 class="feedsel_title">Click to Select Feed</h1>
-            <img src="<?= ADMIN_BASE_URL ?>images/wall/pullup_arrow.png" alt="" />
+            <img src="<?php echo ADMIN_BASE_URL ?>images/wall/pullup_arrow.png" alt="" />
           </a>
         </div>
       </div>
@@ -153,6 +153,6 @@ $(document).ready(function() {
 
 <div id="bottomstrip">
 	<div id="bottomstrip-padding">
-		<a href="<?= ADMIN_URL ?>">&lt;&lt; Back to the Concerto Panel</a>
+		<a href="<?php echo ADMIN_URL ?>">&lt;&lt; Back to the Concerto Panel</a>
 	</div>
 </div>

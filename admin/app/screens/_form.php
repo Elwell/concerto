@@ -28,10 +28,10 @@
     $(document).ready(function() {
       $('a.t-preview').lightBox({
         overlayBgColor: "#000",
-        imageLoading: "<?=ADMIN_BASE_URL?>images/lightbox-ico-loading.gif",
-        imageBtnClose: "<?=ADMIN_BASE_URL?>images/lightbox-btn-close.gif",
-        imageBtnPrev: "<?=ADMIN_BASE_URL?>images/lightbox-btn-prev.gif",
-        imageBtnNext: "<?=ADMIN_BASE_URL?>images/lightbox-btn-next.gif",
+        imageLoading: "<?php echo ADMIN_BASE_URL?>images/lightbox-ico-loading.gif",
+        imageBtnClose: "<?php echo ADMIN_BASE_URL?>images/lightbox-btn-close.gif",
+        imageBtnPrev: "<?php echo ADMIN_BASE_URL?>images/lightbox-btn-prev.gif",
+        imageBtnNext: "<?php echo ADMIN_BASE_URL?>images/lightbox-btn-next.gif",
         txtImage: 'Template'
     });
  });
@@ -92,42 +92,42 @@
 ?>
 
 <!-- Begin Screen Form General Section -->
-<h3>General Screen Settings <a href="<?= ADMIN_URL ?>/pages/show/docs/19#s2"><img class="icon" border="0" src="<?= ADMIN_BASE_URL ?>images/help_button.gif" alt="Extra Help" title="Extra Help" /></a></h3>
+<h3>General Screen Settings <a href="<?php echo ADMIN_URL ?>/pages/show/docs/19#s2"><img class="icon" border="0" src="<?php echo ADMIN_BASE_URL ?>images/help_button.gif" alt="Extra Help" title="Extra Help" /></a></h3>
 <br />
 <div style="text-align:center; width:28%; float:left;">
-	<img src="<?=ADMIN_BASE_URL?>/images/<?echo $scrimg?>" height="150" style="margin-right:15px !important;" alt="" />
+	<img src="<?php echo ADMIN_BASE_URL?>/images/<?php echo $scrimg?>" height="150" style="margin-right:15px !important;" alt="" />
 </div>
 <div style="clear:none; width:70%; float:right;">
 	<table style="clear:none;" class='edit_win' cellpadding='6' cellspacing='0'>
 		<tr>
 			<td class='firstrow'><h5>Screen Name</h5></td>
 			<td class='edit_col firstrow'>
-				<input type="text" id="name" name="screen[name]" value="<?=$screen->name?>">
+				<input type="text" id="name" name="screen[name]" value="<?php echo $screen->name?>">
 			</td>
 		</tr>
 		<tr>
 			<td><h5>Screen Location</h5></td>
 			<td>
-				<input type="text" id="desc" name="screen[location]" value="<?=$screen->location?>">
+				<input type="text" id="desc" name="screen[location]" value="<?php echo $screen->location?>">
 			</td>
 		</tr>
 		<tr>
 			<td><h5>Screen Latitude, Longitude</h5></td>
 			<td>
-				<input type="text" id="latitude" name="screen[latitude]" class="small" value="<?=$screen->latitude?>">&nbsp;&nbsp;,&nbsp;&nbsp;
-				<input type="text" id="longitude" name="screen[longitude]" class="small" value="<?=$screen->longitude?>">
+				<input type="text" id="latitude" name="screen[latitude]" class="small" value="<?php echo $screen->latitude?>">&nbsp;&nbsp;,&nbsp;&nbsp;
+				<input type="text" id="longitude" name="screen[longitude]" class="small" value="<?php echo $screen->longitude?>">
 			</td>
 		</tr>
 		<tr>
 			<td><h5>Screen Size<br />(W x H, in pixels)</h5></td>
 			<td>
-				<input type="text" id="width" name="screen[width]" class="small" value="<?=$screen->width?>">&nbsp;&nbsp;x&nbsp;&nbsp;<input type="text" id="height" name="screen[height]" class="small" value="<?=$screen->height?>">
+				<input type="text" id="width" name="screen[width]" class="small" value="<?php echo $screen->width?>">&nbsp;&nbsp;x&nbsp;&nbsp;<input type="text" id="height" name="screen[height]" class="small" value="<?php echo $screen->height?>">
 			</td>
 		</tr>
 		<tr>
 			<td><h5>MAC Address</h5></td>
 			<td>
-				<input type="text" id="mac_inhex" name="screen[mac_inhex]" value="<?=$screen->mac_inhex?>">
+				<input type="text" id="mac_inhex" name="screen[mac_inhex]" value="<?php echo $screen->mac_inhex?>">
 			</td>
 		</tr>
 
@@ -138,29 +138,29 @@
 							 if(is_array($groups))
 								 foreach($groups as $group) {
 				 ?>
-						<option value="<?= $group['id'] ?>"<?php if($screen->group_id==$group['id']) echo ' SELECTED'; ?>><?=$group['name']?></option>
+						<option value="<?php echo $group['id'] ?>"<?php if($screen->group_id==$group['id']) echo ' SELECTED'; ?>><?php echo $group['name']?></option>
 				 <?php   } ?>
 				 </select></td>
 		</tr>
-<? if (isAdmin() && isset($screen->id))  { ?>
+<?php if (isAdmin() && isset($screen->id))  { ?>
 	 	<tr>
 		 	<td><h5>Controls display</h5><p>Whether or not the machine controls the power state of the display.</p></td>
 		 	<td>
 		 		<select name="screen[controls_display]">
-			 		<option value="0"<?=$screen->controls_display?"":" selected"?>>No</option>
-			 		<option value="1"<?=$screen->controls_display?" selected":""?>>Yes</option>
+			 		<option value="0"<?php echo $screen->controls_display?"":" selected"?>>No</option>
+			 		<option value="1"<?php echo $screen->controls_display?" selected":""?>>Yes</option>
 			 	</select>
 		 	</td>
 	 	</tr>
-<? } ?>
-<? if (isset($screen->id) && (isAdmin() || $screen->controls_display)) { ?>
+<?php } ?>
+<?php if (isset($screen->id) && (isAdmin() || $screen->controls_display)) { ?>
 	 	<tr>
 		 	<td><h5>Display On/Off Times</h5><p>What time should the system turn the screen on and off? <strong>Please specify hh:mm in 24-hour time</strong>, e.g. 18:00 for 6:00 pm, 00:00 for the very beginning of the day, or 23:59 for the end of the day.</p></td>
 		 	<td>
-		 		<input type="text" name="screen[time_on]" class="small" value="<?=$screen->time_on?>" />&nbsp;&nbsp;to&nbsp;&nbsp;<input type="text" name="screen[time_off]" class="small" value="<?=$screen->time_off?>" />
+		 		<input type="text" name="screen[time_on]" class="small" value="<?php echo $screen->time_on?>" />&nbsp;&nbsp;to&nbsp;&nbsp;<input type="text" name="screen[time_off]" class="small" value="<?php echo $screen->time_off?>" />
 		 	</td>
 	 	</tr>
-<? } ?>
+<?php } ?>
 	</table>
 	<br />
 	<table style="clear:none;" class='edit_win' cellpadding='6' cellspacing='0'>
@@ -182,15 +182,15 @@
 	         <div style="clear: both;">
 	           <h4 style='color:#333;margin-bottom:12px;padding-bottom:6px;border-bottom:solid 1px #ccc;'><a href="#" onclick='$("#normal_templates").toggle();return false;'>Normal Templates</a> - Designed to fit your screen best</h4>
 	           <div id='normal_templates'>
-		    <? foreach($this->avail_templates as $template) { ?>
+		    <?php foreach($this->avail_templates as $template) { ?>
 	             <div style="margin:5px;float:left;text-align:center;width:200px;">
-	               <input class="template" type="radio" name="screen[template]" style="vertical-align:middle"  value="<?= $template->id ?>"<?php if($screen->template_id==$template->id) echo ' checked'; ?>>
-	                 <a href="<?=ADMIN_URL.'/templates/preview/'.$template->id.'?width=800&height='.$t_largeheight ?>" class="t-preview">
-                          <img style="vertical-align:middle; margin:10px;" src="<?=ADMIN_URL.'/templates/preview/'.$template->id.'?width=150&height='.$t_height ?>" width="150" height="<?= ($t_height == 0)? "85" : $t_height ?>" alt="<?= $template->name ?>"/>
+	               <input class="template" type="radio" name="screen[template]" style="vertical-align:middle"  value="<?php echo $template->id ?>"<?php if($screen->template_id==$template->id) echo ' checked'; ?>>
+	                 <a href="<?php echo ADMIN_URL.'/templates/preview/'.$template->id.'?width=800&height='.$t_largeheight ?>" class="t-preview">
+                          <img style="vertical-align:middle; margin:10px;" src="<?php echo ADMIN_URL.'/templates/preview/'.$template->id.'?width=150&height='.$t_height ?>" width="150" height="<?php echo ($t_height == 0)? "85" : $t_height ?>" alt="<?php echo $template->name ?>"/>
                         </a>
-	                 <p style="color:#333;"><b><?= $template->name ?></b><br />
-	                   <? if(strlen($template->creator) > 0){ echo "Created by: $template->creator <br />"; } ?>
-	                   <? if(strtotime($template->modified) > 0){echo "Last Updated: " . date("M j, Y", strtotime($template->modified));} ?>
+	                 <p style="color:#333;"><b><?php echo $template->name ?></b><br />
+	                   <?php if(strlen($template->creator) > 0){ echo "Created by: $template->creator <br />"; } ?>
+	                   <?php if(strtotime($template->modified) > 0){echo "Last Updated: " . date("M j, Y", strtotime($template->modified));} ?>
 	                 </p>
 	               </input>
 	             </div>
@@ -202,15 +202,15 @@
 	         <div style="clear: both;">
 	           <h4 style='color:#333;margin-bottom:12px;padding-bottom:6px;border-bottom:solid 1px #ccc;'><a href="#" onclick='$("#other_templates").toggle();return false;'>Other Templates</a> - Might look skewed or stretched on your screen</h4>
 	           <div id='other_templates' style='display: none;'>
-		    <? foreach($this->other_templates as $template) { ?>
+		    <?php foreach($this->other_templates as $template) { ?>
 	             <div style="margin:5px;float:left;text-align:center;width:200px;">
-	               <input class="template" type="radio" name="screen[template]" style="vertical-align:middle"  value="<?= $template->id ?>"<?php if($screen->template_id==$template->id) echo ' checked'; ?>>
-	                 <a href="<?=ADMIN_URL.'/templates/preview/'.$template->id.'?width=800&height='.$t_largeheight ?>" class="t-preview">
-                          <img style="vertical-align:middle; margin:10px;" src="<?=ADMIN_URL.'/templates/preview/'.$template->id.'?width=150&height='.$t_height ?>" width="150" height="<?= ($t_height == 0)? "85" : $t_height ?>" alt="<?= $template->name ?>"/>
+	               <input class="template" type="radio" name="screen[template]" style="vertical-align:middle"  value="<?php echo $template->id ?>"<?php if($screen->template_id==$template->id) echo ' checked'; ?>>
+	                 <a href="<?php echo ADMIN_URL.'/templates/preview/'.$template->id.'?width=800&height='.$t_largeheight ?>" class="t-preview">
+                          <img style="vertical-align:middle; margin:10px;" src="<?php echo ADMIN_URL.'/templates/preview/'.$template->id.'?width=150&height='.$t_height ?>" width="150" height="<?php echo ($t_height == 0)? "85" : $t_height ?>" alt="<?php echo $template->name ?>"/>
                         </a>
-	                 <p style="color:#333;"><b><?= $template->name ?></b><br />
-	                   <? if(strlen($template->creator) > 0){ echo "Created by: $template->creator <br />"; } ?>
-	                   <? if(strtotime($template->modified) > 0){echo "Last Updated: " . date("M j, Y", strtotime($template->modified));} ?>
+	                 <p style="color:#333;"><b><?php echo $template->name ?></b><br />
+	                   <?php if(strlen($template->creator) > 0){ echo "Created by: $template->creator <br />"; } ?>
+	                   <?php if(strtotime($template->modified) > 0){echo "Last Updated: " . date("M j, Y", strtotime($template->modified));} ?>
 	                 </p>
 	               </input>
 	             </div>
@@ -222,15 +222,15 @@
 	         <div style="clear: both;">
 	           <h4 style='color:#333;margin-bottom:12px;padding-bottom:6px;border-bottom:solid 1px #ccc;'><a href="#" onclick='$("#admin_templates").toggle();return false;'>Admin-Only Templates</a> - For admin access only!</h4>
 	           <div id='admin_templates' style='display: none;'>
-		    <? foreach($this->admin_templates as $template) { ?>
+		    <?php foreach($this->admin_templates as $template) { ?>
 	             <div style="margin:5px;float:left;text-align:center;width:200px;">
-	               <input class="template" type="radio" name="screen[template]" style="vertical-align:middle"  value="<?= $template->id ?>"<?php if($screen->template_id==$template->id) echo ' checked'; ?>>
-	                 <a href="<?=ADMIN_URL.'/templates/preview/'.$template->id.'?width=800&height='.$t_largeheight ?>" class="t-preview">
-                          <img style="vertical-align:middle; margin:10px;" src="<?=ADMIN_URL.'/templates/preview/'.$template->id.'?width=150&height='.$t_height ?>" width="150" height="<?= ($t_height == 0)? "85" : $t_height ?>" alt="<?= $template->name ?>"/>
+	               <input class="template" type="radio" name="screen[template]" style="vertical-align:middle"  value="<?php echo $template->id ?>"<?php if($screen->template_id==$template->id) echo ' checked'; ?>>
+	                 <a href="<?php echo ADMIN_URL.'/templates/preview/'.$template->id.'?width=800&height='.$t_largeheight ?>" class="t-preview">
+                          <img style="vertical-align:middle; margin:10px;" src="<?php echo ADMIN_URL.'/templates/preview/'.$template->id.'?width=150&height='.$t_height ?>" width="150" height="<?php echo ($t_height == 0)? "85" : $t_height ?>" alt="<?php echo $template->name ?>"/>
                         </a>
-                        <p style="color:#333;"><b><?= $template->name ?></b><br />
-	                   <? if(strlen($template->creator) > 0){ echo "Created by: $template->creator <br />"; } ?>
-	                   <? if(strtotime($template->modified) > 0){echo "Last Updated: " . date("M j, Y", strtotime($template->modified));} ?>
+                        <p style="color:#333;"><b><?php echo $template->name ?></b><br />
+	                   <?php if(strlen($template->creator) > 0){ echo "Created by: $template->creator <br />"; } ?>
+	                   <?php if(strtotime($template->modified) > 0){echo "Last Updated: " . date("M j, Y", strtotime($template->modified));} ?>
 	                 </p>
 	               </input>
 	             </div>

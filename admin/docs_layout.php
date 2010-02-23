@@ -28,21 +28,21 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
-<title><?=$this->getTitle()?> - Concerto Support</title>
+<title><?php echo $this->getTitle()?> - Concerto Support</title>
 
-<link rel="stylesheet" type="text/css" href="<?= ADMIN_BASE_URL ?>css/docs.css" />
+<link rel="stylesheet" type="text/css" href="<?php echo ADMIN_BASE_URL ?>css/docs.css" />
 
-<script type="text/javascript" src="<?=ADMIN_BASE_URL?>js/jquery.js"></script>
-<script type="text/javascript" src="<?=ADMIN_BASE_URL?>js/ui.lightbox.js"></script>
-<script type="text/javascript" src="<?=ADMIN_BASE_URL?>js/ui.tablesort.js"></script>
-<script type="text/javascript" src="<?=ADMIN_BASE_URL?>js/ui.jquery.js"></script>
+<script type="text/javascript" src="<?php echo ADMIN_BASE_URL?>js/jquery.js"></script>
+<script type="text/javascript" src="<?php echo ADMIN_BASE_URL?>js/ui.lightbox.js"></script>
+<script type="text/javascript" src="<?php echo ADMIN_BASE_URL?>js/ui.tablesort.js"></script>
+<script type="text/javascript" src="<?php echo ADMIN_BASE_URL?>js/ui.jquery.js"></script>
 
-<meta name="generator" content="Concerto <?= CONCERTO_VERSION ?>">
+<meta name="generator" content="Concerto <?php echo CONCERTO_VERSION ?>">
 <meta name="application-name" content="Concerto Support"/>
 <meta name="description" content="One-Stop Support for the RPI Digital Signage Network."/>
-<meta name="application-url" content="http://<?= $_SERVER['SERVER_NAME'] . ADMIN_URL ?>/pages/show/docs/"/>
-<link rel="icon" href="<?=ADMIN_BASE_URL?>images/concerto_32x32.png" sizes="32x32"/>
-<link rel="icon" href="<?=ADMIN_BASE_URL?>images/concerto_48x48.png" sizes="48x48"/>
+<meta name="application-url" content="http://<?php echo $_SERVER['SERVER_NAME'] . ADMIN_URL ?>/pages/show/docs/"/>
+<link rel="icon" href="<?php echo ADMIN_BASE_URL?>images/concerto_32x32.png" sizes="32x32"/>
+<link rel="icon" href="<?php echo ADMIN_BASE_URL?>images/concerto_48x48.png" sizes="48x48"/>
 
 <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
 
@@ -52,10 +52,10 @@
 
 <div id="left_pane"><div id="left_pane_padding">
   <!-- BEGIN Sidebar -->
-  <br /><center><a href="<?=ADMIN_URL.'/'.$this->controller.'/'.$this->action.'/'.$this->category['path']?>">
-  <img src="<?= ADMIN_BASE_URL ?>images/conc_support.gif" alt="Concerto Support" style="" border="0" />
+  <br /><center><a href="<?php echo ADMIN_URL.'/'.$this->controller.'/'.$this->action.'/'.$this->category['path']?>">
+  <img src="<?php echo ADMIN_BASE_URL ?>images/conc_support.gif" alt="Concerto Support" style="" border="0" />
   </a></center>
-  <h1><a href="<?= ADMIN_URL ?>">Control Panel</a></h1>
+  <h1><a href="<?php echo ADMIN_URL ?>">Control Panel</a></h1>
   <div id="toc">
     <ol>
 <?php
@@ -76,8 +76,8 @@ if(is_array($this->menu_links))
   </div>
 
   <div id="content_header">
-    <h1><?=$this->getTitle()?></h1>
-    <h2><?=$this->getSubtitle()?></h2>
+    <h1><?php echo $this->getTitle()?></h1>
+    <h2><?php echo $this->getSubtitle()?></h2>
   </div>
 
   <div id="maincontent">
@@ -95,7 +95,7 @@ if(is_array($this->menu_links))
   <div id="footer">
     <div id="footer_padding">
     	<p>Copyright &copy; 2009 Rensselaer Polytechnic Institute (<a href="http://webtech.union.rpi.edu">Web Technologies Group</a>)</p>
-   		<p><a href="<?= ADMIN_URL ?>/pages/show/docs/">Support Center</a> | <a href="http://webtech.union.rpi.edu/ticket">Submit Help Ticket</a> | <a href="mailto:<?= SYSTEM_EMAIL ?>">Contact Us</a></p>
+   		<p><a href="<?php echo ADMIN_URL ?>/pages/show/docs/">Support Center</a> | <a href="http://webtech.union.rpi.edu/ticket">Submit Help Ticket</a> | <a href="mailto:<?php echo SYSTEM_EMAIL ?>">Contact Us</a></p>
     </div>
   </div>
 <?php if(defined('GA_TRACKING') && GA_TRACKING) { ?>
@@ -104,7 +104,7 @@ var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "htt
 document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
 </script>
 <script type="text/javascript">
-var pageTracker = _gat._getTracker("<?= GA_TRACKING ?>");
+var pageTracker = _gat._getTracker("<?php echo GA_TRACKING ?>");
 pageTracker._trackPageview();
 </script>
 <?php } ?>

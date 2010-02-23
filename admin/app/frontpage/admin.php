@@ -26,10 +26,10 @@
 ?><h2>Please use these utilities wisely.</h2>
 
 <div class="roundcont">
-  <div class="roundtop"><span class="rt"><img src="<? echo ADMIN_BASE_URL ?>/images/blsp.gif" height="6" width="1" alt="" /></span></div>
+  <div class="roundtop"><span class="rt"><img src="<?php echo ADMIN_BASE_URL ?>/images/blsp.gif" height="6" width="1" alt="" /></span></div>
   <div class="roundcont_main">
   <h1>Masquerade (su)</h1>
-  <form action="<?=ADMIN_URL?>/frontpage/su" method="POST">
+  <form action="<?php echo ADMIN_URL?>/frontpage/su" method="POST">
     <select name="su">
     <option></option>
 <?php
@@ -46,24 +46,24 @@
     <input type="submit" value="su" />
   </form>
   </div>
-  <div class="roundbottom"><span class="rb"><img src="<? echo ADMIN_BASE_URL ?>/images/blsp.gif" height="6" width="1" alt="" /></span></div>
+  <div class="roundbottom"><span class="rb"><img src="<?php echo ADMIN_BASE_URL ?>/images/blsp.gif" height="6" width="1" alt="" /></span></div>
 </div>
 <div class="roundcont">
-  <div class="roundtop"><span class="rt"><img src="<? echo ADMIN_BASE_URL ?>/images/blsp.gif" height="6" width="1" alt="" /></span></div>
+  <div class="roundtop"><span class="rt"><img src="<?php echo ADMIN_BASE_URL ?>/images/blsp.gif" height="6" width="1" alt="" /></span></div>
   <div class="roundcont_main">
   <h1>Page Load Statisics</h1>
   <form method="POST">
-    <input type="submit" name="stats" value="Turn <?= (array_key_exists('stats', $_SESSION) && $_SESSION['stats']) ?'Off':'On'?>" />
+    <input type="submit" name="stats" value="Turn <?php echo (array_key_exists('stats', $_SESSION) && $_SESSION['stats']) ?'Off':'On'?>" />
   </form>
   </div>
-  <div class="roundbottom"><span class="rb"><img src="<? echo ADMIN_BASE_URL ?>/images/blsp.gif" height="6" width="1" alt="" /></span></div>
+  <div class="roundbottom"><span class="rb"><img src="<?php echo ADMIN_BASE_URL ?>/images/blsp.gif" height="6" width="1" alt="" /></span></div>
 </div>
 
 
-<h3>Admin Privs: <span class="emph"><?= isAdmin() ?></span></h3>
-<h3>Reset Session: <span class="emph"><a href="<?=ADMIN_URL?>/frontpage/su?r=1">reset</a></span></h3>
-<h3>Admin Revision: <span class="emph"><?system('svnversion')?></span></h3>
-<a href="<?= ADMIN_URL ?>/frontpage/phpinfo">PHP Info</a><br />
-<a href="<?= ADMIN_URL ?>/frontpage/mailer">Send Mail</a><br />
-<a href="<?= ADMIN_URL ?>/frontpage/addtemplate">Template Importer</a></br>
+<h3>Admin Privs: <span class="emph"><?php echo isAdmin() ?></span></h3>
+<h3>Reset Session: <span class="emph"><a href="<?php echo ADMIN_URL?>/frontpage/su?r=1">reset</a></span></h3>
+<h3>Admin Revision: <span class="emph"><?php system('svnversion')?></span></h3>
+<a href="<?php echo ADMIN_URL ?>/frontpage/phpinfo">PHP Info</a><br />
+<a href="<?php echo ADMIN_URL ?>/frontpage/mailer">Send Mail</a><br />
+<a href="<?php echo ADMIN_URL ?>/frontpage/addtemplate">Template Importer</a></br>
 

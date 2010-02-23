@@ -23,8 +23,8 @@
  * @license      GPLv2, see www.gnu.org/licenses/gpl-2.0.html
  * @version      $Revision$
  */
-?><a href="<?=ADMIN_URL.'/page_categories/new' ?>"><span class="buttonsel"><div class="buttonleft"><img src="<?= ADMIN_BASE_URL ?>/images/buttonsel_left.gif" border="0" alt="" /></div><div class="buttonmid"><div class="buttonmid_padding">New Category</div></div><div class="buttonright"><img src="<?= ADMIN_BASE_URL ?>/images/buttonsel_right.gif" border="0" alt="" /></div></span></a>
-<a href="<?=ADMIN_URL.'/pages' ?>"><span class="buttonsel"><div class="buttonleft"><img src="<?= ADMIN_BASE_URL ?>/images/buttonsel_left.gif" border="0" alt="" /></div><div class="buttonmid"><div class="buttonmid_padding">View Pages</div></div><div class="buttonright"><img src="<?= ADMIN_BASE_URL ?>/images/buttonsel_right.gif" border="0" alt="" /></div></span></a>
+?><a href="<?php echo ADMIN_URL.'/page_categories/new' ?>"><span class="buttonsel"><div class="buttonleft"><img src="<?php echo ADMIN_BASE_URL ?>/images/buttonsel_left.gif" border="0" alt="" /></div><div class="buttonmid"><div class="buttonmid_padding">New Category</div></div><div class="buttonright"><img src="<?php echo ADMIN_BASE_URL ?>/images/buttonsel_right.gif" border="0" alt="" /></div></span></a>
+<a href="<?php echo ADMIN_URL.'/pages' ?>"><span class="buttonsel"><div class="buttonleft"><img src="<?php echo ADMIN_BASE_URL ?>/images/buttonsel_left.gif" border="0" alt="" /></div><div class="buttonmid"><div class="buttonmid_padding">View Pages</div></div><div class="buttonright"><img src="<?php echo ADMIN_BASE_URL ?>/images/buttonsel_right.gif" border="0" alt="" /></div></span></a>
 <div style="clear:both;height:12px;"></div>
 
 
@@ -34,7 +34,7 @@
 if($this->categories){
 	foreach($this->categories as $cat){
 ?>
-  <tr><td><h1><a href="<?= ADMIN_URL?>/page_categories/show/<?= $cat['id'] ?>"><?= $cat['name'] ?></a></h1></td></tr>
+  <tr><td><h1><a href="<?php echo ADMIN_URL?>/page_categories/show/<?php echo $cat['id'] ?>"><?php echo $cat['name'] ?></a></h1></td></tr>
 <?php
 	}
 }

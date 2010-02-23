@@ -24,7 +24,7 @@
  * @version      $Revision$
  */
 ?><form method="POST" 
-action="<?=ADMIN_URL?>/pages/update/<?=$this->page['id']?>">
+action="<?php echo ADMIN_URL?>/pages/update/<?php echo $this->page['id']?>">
 <?php 
 	include("_form.php");
 ?>

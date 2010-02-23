@@ -28,39 +28,39 @@
 
     <div class="logo_box">
 	   	<div class="logo_box_padding">
-	    	<center><a href="<?= ADMIN_URL ?>/"><img 
+	    	<center><a href="<?php echo ADMIN_URL ?>/"><img 
 src="<?php echo ADMIN_BASE_URL?>/images/conc_bluebg.gif" alt="Concerto" style="" border="0" 
 /></a></center>
 	   	</div>
-	  	<div class="logo_box_bot"><img border="0" src="<?= ADMIN_BASE_URL ?>images/logobox_bottom.gif" alt="" /></div>
+	  	<div class="logo_box_bot"><img border="0" src="<?php echo ADMIN_BASE_URL ?>images/logobox_bottom.gif" alt="" /></div>
 	 	</div>
     <div class="menu_box">
-    	<div class="menu_box_top"><img border="0" src="<?= ADMIN_BASE_URL ?>images/menubox_top.gif" alt="" /></div>
+    	<div class="menu_box_top"><img border="0" src="<?php echo ADMIN_BASE_URL ?>images/menubox_top.gif" alt="" /></div>
 	    <div class="menu_box_padding">
-        <? 
+        <?php 
          if (!isLoggedIn()) { ?>
-         <h2 style="font-size:1.6em;"><a href="<?= ADMIN_URL ?>/frontpage/login">Log In</a></h2>        
-	<? } else {
+         <h2 style="font-size:1.6em;"><a href="<?php echo ADMIN_URL ?>/frontpage/login">Log In</a></h2>        
+	<?php } else {
          ?>
-	   <?	 echo '<p>Welcome, <a href="'.ADMIN_URL.'/users/show/'.userName().'">'.firstName().'</a>!</p><br />';  ?>
-	   	<a href="<?= ADMIN_URL ?>/users/show/<?= userName() ?>" title="View your profile and past submissions">
-     <?  if ( isAdmin() ) { ?>
-         <img border="0" src="<?=ADMIN_BASE_URL ?>images/user_1337.gif" alt="" />
-           <? } elseif ($_SESSION[user]->controls_afeed() || $_SESSION[user]->controls_ascreen()) { ?>
-         <img border="0" src="<?=ADMIN_BASE_URL ?>images/user_admin.gif" alt="" />
-           <? } else { ?>
-         <img border="0" src="<?= ADMIN_BASE_URL ?>images/user_basic.gif" alt="" /> 
-           <? } //This closes the non admin or moderator stuff 
+	   <?php echo '<p>Welcome, <a href="'.ADMIN_URL.'/users/show/'.userName().'">'.firstName().'</a>!</p><br />';  ?>
+	   	<a href="<?php echo ADMIN_URL ?>/users/show/<?php echo userName() ?>" title="View your profile and past submissions">
+     <?php  if ( isAdmin() ) { ?>
+         <img border="0" src="<?php echo ADMIN_BASE_URL ?>images/user_1337.gif" alt="" />
+           <?php } elseif ($_SESSION[user]->controls_afeed() || $_SESSION[user]->controls_ascreen()) { ?>
+         <img border="0" src="<?php echo ADMIN_BASE_URL ?>images/user_admin.gif" alt="" />
+           <?php } else { ?>
+         <img border="0" src="<?php echo ADMIN_BASE_URL ?>images/user_basic.gif" alt="" /> 
+           <?php } //This closes the non admin or moderator stuff 
            ?>
            
            <h4>View Account</h4></a>
            <br />
-           <h3><a href="<?= ADMIN_URL ?>/frontpage/logout" title="Log out of Concerto">Logout</a></h3>
-        <?
+           <h3><a href="<?php echo ADMIN_URL ?>/frontpage/logout" title="Log out of Concerto">Logout</a></h3>
+        <?php
           }
         ?>
       </div>
-      <div class="menu_box_bot"><img border="0" src="<?= ADMIN_BASE_URL ?>images/menubox_bottom.gif" alt="" /></div>
+      <div class="menu_box_bot"><img border="0" src="<?php echo ADMIN_BASE_URL ?>images/menubox_bottom.gif" alt="" /></div>
     </div>
 
 <?php
@@ -88,15 +88,15 @@ if(isset($mod_feeds) || ($more_waiting && isAdmin())) {
     <div class="alert_box">
 	   <div class="alert_box_inset">
         <div class="alert_box_padding">
-          <h1><a href="<?=ADMIN_URL?>/moderate">Awaiting Moderation</a></h1>
-          <?= isset($mod_feeds) ? join("\n", $mod_feeds) : "Nothing in your feeds." ?>
-          <? if ($more_waiting > 0 && isAdmin()) {?>
-             <p><a href="<?=ADMIN_URL?>/moderate"><?=$more_waiting?> items in other feeds...</a></p>
-          <? } ?>
+          <h1><a href="<?php echo ADMIN_URL?>/moderate">Awaiting Moderation</a></h1>
+          <?php echo isset($mod_feeds) ? join("\n", $mod_feeds) : "Nothing in your feeds." ?>
+          <?php if ($more_waiting > 0 && isAdmin()) {?>
+             <p><a href="<?php echo ADMIN_URL?>/moderate"><?php echo $more_waiting?> items in other feeds...</a></p>
+          <?php } ?>
         </div>
       </div>
     </div>
-<?
+<?php
 }
 ?>
   </div>

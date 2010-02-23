@@ -24,8 +24,8 @@
  * @version      $Revision$
  */
 ?><?php if(isAdmin()) { ?>
-<a href="<?=ADMIN_URL.'/users/new' ?>"><span class="buttonsel"><div class="buttonleft"><img src="<?= ADMIN_BASE_URL ?>/images/buttonsel_left.gif" border="0" alt="" /></div><div class="buttonmid"><div class="buttonmid_padding">New User</div></div><div class="buttonright"><img src="<?= ADMIN_BASE_URL ?>/images/buttonsel_right.gif" border="0" alt="" /></div></span></a><div style="clear:both;height:12px;"></div>
-<? } ?>
+<a href="<?php echo ADMIN_URL.'/users/new' ?>"><span class="buttonsel"><div class="buttonleft"><img src="<?php echo ADMIN_BASE_URL ?>/images/buttonsel_left.gif" border="0" alt="" /></div><div class="buttonmid"><div class="buttonmid_padding">New User</div></div><div class="buttonright"><img src="<?php echo ADMIN_BASE_URL ?>/images/buttonsel_right.gif" border="0" alt="" /></div></span></a><div style="clear:both;height:12px;"></div>
+<?php } ?>
 <h2>Click on a user to view his or her profile.</h2>
 <table class="edit_win" cellpadding="6" cellspacing="0">
 <?php
@@ -33,8 +33,8 @@ $notfirst = 0; // Indicate that we haven't displayed the first row yet (for top 
 foreach($this->users as $user){
    ?>
 <tr>
-  <td<? if (!$notfirst) {$notfirst =1;  echo ' class="firstrow"';} ?>>
-  	<h1><a href="<?= ADMIN_URL?>/users/show/<? echo $user->username ?>"><?= $user->name ?></a></h1>
+  <td<?php if (!$notfirst) {$notfirst =1;  echo ' class="firstrow"';} ?>>
+  	<h1><a href="<?php echo ADMIN_URL?>/users/show/<?php echo $user->username ?>"><?php echo $user->name ?></a></h1>
   </td>
 	<td>
    	<h4>&nbsp;<?php

@@ -1,4 +1,4 @@
-<?
+<?php
 /**
  * This file was developed as part of the Concerto digital signage project
  * at RPI.

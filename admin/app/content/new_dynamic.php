@@ -37,7 +37,7 @@
                           title: "Loading..."
                         });
             $.ajax({type: "GET",
-                    url: "<?=ADMIN_URL?>/content/new_preview/",
+                    url: "<?php echo ADMIN_URL?>/content/new_preview/",
                     data: {"feed_id": $("#dd_feed", form).val(),
                            "name": $("#dd_name", form).val(),
                            "content": $("#dd_content", form).val(),
@@ -79,12 +79,12 @@
 })(jQuery);
 //--></script>
 <div style="height:220px; width:330px; float:left;">
-   <img src="<?= ADMIN_BASE_URL ?>images/dynamic_text_icon.jpg" alt="" />
+   <img src="<?php echo ADMIN_BASE_URL ?>images/dynamic_text_icon.jpg" alt="" />
 </div>
 <h1 class="addcontent">Add Dynamic Text</h1>
 <h2>Fill in these details to post a dynamic data item to Concerto.</h2>
 <div style="clear:both;"></div>
-<form method="post" action="<?=ADMIN_URL?>/content/create" id="new_dynamic">
+<form method="post" action="<?php echo ADMIN_URL?>/content/create" id="new_dynamic">
 <br /><br />
 
 <table class='edit_win' cellpadding='6' cellspacing='0'>
@@ -100,10 +100,10 @@
 foreach ($this->ndc_feeds as $arr) {
     list($feed, $value) = $arr;?>
                  <option class="feedopt"
-                   title="<?=$feed->description ? $feed->description : ' '?>"
-                   value="<?=$feed->id?>"><?=$feed->name?></option>
+                   title="<?php echo $feed->description ? $feed->description : ' '?>"
+                   value="<?php echo $feed->id?>"><?php echo $feed->name?></option>
 
-<? } ?>
+<?php } ?>
 
                </select>
 			 <br />
@@ -118,7 +118,7 @@ foreach ($this->ndc_feeds as $arr) {
 <tr>
          <td><h5>Title</h5><p>Enter the title.</p></td>
          <td colspan="2" class='edit_col'>
-           <input type="text" class="extended" id="dd_name" name="content[name]" value="<?=$content->name?> " />
+           <input type="text" class="extended" id="dd_name" name="content[name]" value="<?php echo $content->name?> " />
          </td>
    </tr>
   <tr>
@@ -140,7 +140,7 @@ foreach ($this->ndc_feeds as $arr) {
          <td><h5>Start Date</h5><p>When does the event start?</p></td>
          <td class="edit_col">
            Date:
-           <input type="text" class="start_date" id="dd_start_date" name="content[start_date]" value="<?=$content->start_time?>" />
+           <input type="text" class="start_date" id="dd_start_date" name="content[start_date]" value="<?php echo $content->start_time?>" />
                 Time:
            <select id="dd_start_time_hr" name="content[start_time_hr]">
            <option value="12">12</option>
@@ -172,7 +172,7 @@ foreach ($this->ndc_feeds as $arr) {
          <td><h5>End Date</h5><p>When does the event end?</p></td>
          <td>
            Date:
-           <input id="dd_end_date" type="text" class="end_date" name="content[end_date]" value="<?=$content->end_time?>" />
+           <input id="dd_end_date" type="text" class="end_date" name="content[end_date]" value="<?php echo $content->end_time?>" />
                 Time:
            <select id="dd_end_time_hr" name="content[end_time_hr]">
            <option value="12">12</option>

@@ -24,9 +24,9 @@
  * @version      $Revision$
  */
 ?><?php if (isAdmin()) {?>
-<a href="<?=ADMIN_URL.'/screens/new' ?>"><span class="buttonsel"><div class="buttonleft"><img src="<?= ADMIN_BASE_URL ?>/images/buttonsel_left.gif" border="0" alt="" /></div><div class="buttonmid"><div class="buttonmid_padding">New Screen</div></div><div class="buttonright"><img src="<?= ADMIN_BASE_URL ?>/images/buttonsel_right.gif" border="0" alt="" /></div></span></a><div style="clear:both;height:12px;"></div>
+<a href="<?php echo ADMIN_URL.'/screens/new' ?>"><span class="buttonsel"><div class="buttonleft"><img src="<?php echo ADMIN_BASE_URL ?>/images/buttonsel_left.gif" border="0" alt="" /></div><div class="buttonmid"><div class="buttonmid_padding">New Screen</div></div><div class="buttonright"><img src="<?php echo ADMIN_BASE_URL ?>/images/buttonsel_right.gif" border="0" alt="" /></div></span></a><div style="clear:both;height:12px;"></div>
 <?php } ?>
-<h2>Click on the name of a screen to view its details. <a href="<?= ADMIN_URL ?>/pages/show/docs/19#s1"><img class="icon" border="0" src="<?= ADMIN_BASE_URL ?>images/help_button.gif" alt="Extra Help" title="Extra Help" /></a></h2>
+<h2>Click on the name of a screen to view its details. <a href="<?php echo ADMIN_URL ?>/pages/show/docs/19#s1"><img class="icon" border="0" src="<?php echo ADMIN_BASE_URL ?>images/help_button.gif" alt="Extra Help" title="Extra Help" /></a></h2>
 <?php
 foreach($this->screens as $screen){
    if ($screen->width/$screen->height==(16/9)){
@@ -83,20 +83,20 @@ foreach($this->screens as $screen){
    }
    
 ?>
-  <a href="<?echo ADMIN_URL?>/screens/show/<? echo $screen->id ?>">
+  <a href="<?php echo ADMIN_URL?>/screens/show/<?php echo $screen->id ?>">
     <div class="roundcont roundcont_sf">
-			<div class="roundtop"><span class="rt"><img src="<? echo ADMIN_BASE_URL ?>/images/blsp.gif" height="6" width="1" alt="" /></span></div>
+			<div class="roundtop"><span class="rt"><img src="<?php echo ADMIN_BASE_URL ?>/images/blsp.gif" height="6" width="1" alt="" /></span></div>
 			<div class="roundcont_main sf">
-				<img src="<?echo ADMIN_BASE_URL?>/images/<?echo $scrimg?>" 
-                 height="100" alt="" onclick="window.location='<?=ADMIN_URL?>/screens/show/<?=$screen->id?>'" /><br />
+				<img src="<?php echo ADMIN_BASE_URL?>/images/<?php echo $scrimg?>" 
+                 height="100" alt="" onclick="window.location='<?php echo ADMIN_URL?>/screens/show/<?php echo $screen->id?>'" /><br />
 				<div class="sf_header">
-					<p style="color:<? echo $statcolor ?>;"><? echo $status ?></p>
-					<h1><? echo $screen->name?></h1>
-					<h2><? echo $screen->location?></h2>
+					<p style="color:<?php echo $statcolor ?>;"><?php echo $status ?></p>
+					<h1><?php echo $screen->name?></h1>
+					<h2><?php echo $screen->location?></h2>
 				</div>
 				<div style="clear:both;"></div>
 			</div>
-			<div class="roundbottom"><span class="rb"><img src="<? echo ADMIN_BASE_URL ?>/images/blsp.gif" height="6" width="1" alt="" /></span></div>
+			<div class="roundbottom"><span class="rb"><img src="<?php echo ADMIN_BASE_URL ?>/images/blsp.gif" height="6" width="1" alt="" /></span></div>
 		</div>
   </a>
 

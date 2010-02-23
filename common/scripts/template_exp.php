@@ -1,4 +1,4 @@
-<?
+<?php
 /**
  * This file was developed as part of the Concerto digital signage project
  * at RPI.
@@ -45,31 +45,31 @@ if(isset($_GET['id']) && is_numeric($_GET['id'])){
   echo "<?xml version=\"1.0\"?>\n";
 ?>
 <template>
-  <name><?= $t_row['name'] ?></name>
-  <width><?= $t_row['width'] ?></width>
-  <height><?= $t_row['height'] ?></height>
-  <author><?= $t_row['creator'] ?></author>
-<? $i=0;
+  <name><?php echo $t_row['name'] ?></name>
+  <width><?php echo $t_row['width'] ?></width>
+  <height><?php echo $t_row['height'] ?></height>
+  <author><?php echo $t_row['creator'] ?></author>
+<?php $i=0;
    while($f_row = sql_row_keyed($f_res,$i)){?>
   <field>
-    <name><?= $f_row['name'] ?></name>
-    <type><?= $f_row['type'] ?></type>
-    <style><?= str_replace("\r\n", ' ', $f_row['style']) ?></style>
-    <left><?= $f_row['left'] ?></left>
-    <top><?= $f_row['top'] ?></top>
-    <width><?= $f_row['width'] ?></width>
-    <height><?= $f_row['height'] ?></height>
+    <name><?php echo $f_row['name'] ?></name>
+    <type><?php echo $f_row['type'] ?></type>
+    <style><?php echo str_replace("\r\n", ' ', $f_row['style']) ?></style>
+    <left><?php echo $f_row['left'] ?></left>
+    <top><?php echo $f_row['top'] ?></top>
+    <width><?php echo $f_row['width'] ?></width>
+    <height><?php echo $f_row['height'] ?></height>
   </field>
-<? $i++; } ?>
+<?php $i++; } ?>
 </template>
-<? } else {
+<?php } else {
   $sql = "SELECT id, name,filename FROM template WHERE hidden = 0";
   $res = sql_query($sql);
 ?>
 <ul>
-  <? $i=0;
+  <?php $i=0;
   while($row = sql_row_keyed($res,$i)){ ?>
-  <li><a href="template_exp.php?id=<?= $row['id']?>"><?= $row['name'] ?></a> <a href="<?= ROOT_URL ?>content/templates/<?= $row['filename']?>">[img]</a></li>
-<?  $i++; } ?>
+  <li><a href="template_exp.php?id=<?php echo $row['id']?>"><?php echo $row['name'] ?></a> <a href="<?php echo ROOT_URL ?>content/templates/<?php echo $row['filename']?>">[img]</a></li>
+<?php  $i++; } ?>
 </ul>
-<? } ?>
+<?php } ?>

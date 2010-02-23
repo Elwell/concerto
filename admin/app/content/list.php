@@ -23,7 +23,7 @@
  * @license      GPLv2, see www.gnu.org/licenses/gpl-2.0.html
  * @version      $Revision$
  */
-?><a href="<?=ADMIN_URL.'/content/new'?>"><span class="buttonsel"><div class="buttonleft"><img src="<?= ADMIN_BASE_URL ?>/images/buttonsel_left.gif" border="0" alt="" /></div><div class="buttonmid"><div class="buttonmid_padding">Submit Content</div></div><div class="buttonright"><img src="<?= ADMIN_BASE_URL ?>/images/buttonsel_right.gif" border="0" alt="" /></div></span></a><div style="clear:both;height:12px;"></div>
+?><a href="<?php echo ADMIN_URL.'/content/new'?>"><span class="buttonsel"><div class="buttonleft"><img src="<?php echo ADMIN_BASE_URL ?>/images/buttonsel_left.gif" border="0" alt="" /></div><div class="buttonmid"><div class="buttonmid_padding">Submit Content</div></div><div class="buttonright"><img src="<?php echo ADMIN_BASE_URL ?>/images/buttonsel_right.gif" border="0" alt="" /></div></span></a><div style="clear:both;height:12px;"></div>
 <h2>All active content in the system is shown.  Click on a title for details.</h2>
 <?php
 if(is_array($this->contents) && count($this->contents>1))
@@ -31,7 +31,7 @@ if(is_array($this->contents) && count($this->contents>1))
 foreach(array_keys($this->contents) as $field)
      $urls[]='<a href="#'.$field.'">'.$field.'</a>';
 ?>
-<p>Jump to: <?=join(" | ", $urls)?>
+<p>Jump to: <?php echo join(" | ", $urls)?>
 </p>
 <?php
 } else {
@@ -69,35 +69,35 @@ foreach($this->contents as $field=>$contents)
 <?php
 if ($has_imagecol) { 
 ?>
-      <img src="<?= ADMIN_URL?>/content/image/<?= $content->id ?>?width=50&height=38" />
+      <img src="<?php echo ADMIN_URL?>/content/image/<?php echo $content->id ?>?width=50&height=38" />
 <?php } ?>
-      </td><td><span class="mintitle"><span class="emph"><a href="<?= ADMIN_URL?>/content/show/<?= $content->id ?>"><?= $content->name ?></a></span> <b><?= date("m/j/y",strtotime($content->start_time)) ?> - <?= date("m/j/y",strtotime($content->end_time)) ?></b></span></td></tr></table>
+      </td><td><span class="mintitle"><span class="emph"><a href="<?php echo ADMIN_URL?>/content/show/<?php echo $content->id ?>"><?php echo $content->name ?></a></span> <b><?php echo date("m/j/y",strtotime($content->start_time)) ?> - <?php echo date("m/j/y",strtotime($content->end_time)) ?></b></span></td></tr></table>
     </td>
   </tr>
   <!-- NEW COLLAPSED LIST CODE ENDS HERE -->
 
   <tr>
-    <td<? if (!$notfirst) echo ' class="firstrow"'; ?>>
-    <a href="<?= ADMIN_URL?>/content/show/<?= $content->id ?>"> 
-    <img src="<?= ADMIN_URL?>/content/image/<?= $content->id ?>?width=200&height=150" />
+    <td<?php if (!$notfirst) echo ' class="firstrow"'; ?>>
+    <a href="<?php echo ADMIN_URL?>/content/show/<?php echo $content->id ?>"> 
+    <img src="<?php echo ADMIN_URL?>/content/image/<?php echo $content->id ?>?width=200&height=150" />
     </a>
     </td>
 <?php
       }
 ?>
 
-    <td class="edit_col<? if (!$notfirst) {$notfirst =1;  echo ' firstrow';} ?>"
-        <?if(!$has_imagecol) echo "colspan=2";?>>
-      <a href="<?= ADMIN_URL?>/content/show/<? echo $content->id ?>">
-       <h1><a href="<?= ADMIN_URL?>/content/show/<? echo $content->id ?>"><?=$content->name?></a></h1>
+    <td class="edit_col<?php if (!$notfirst) {$notfirst =1;  echo ' firstrow';} ?>"
+        <?php if(!$has_imagecol) echo "colspan=2";?>>
+      <a href="<?php echo ADMIN_URL?>/content/show/<?php echo $content->id ?>">
+       <h1><a href="<?php echo ADMIN_URL?>/content/show/<?php echo $content->id ?>"><?php echo $content->name?></a></h1>
        <span style="font-size:1.5em;font-weight:bold;color:#333;margin-bottom:12px;">
 <?php
           if($content->mime_type == "text/plain")
              echo "$content->content<br/>\n";
 ?>
-       <?=date("m/j/Y",strtotime($content->start_time))?> - <?=date("m/j/Y",strtotime($content->end_time))?></span>
-       (<?=$time_range?> <?=$time_units?><?=$time_range==1?'':'s'?>)
-       <h2>Submitted by <strong><a href="<?=ADMIN_URL.'/users/show/'.$submitter->username?>"><?=$submitter->name?></a></strong></h2>
+       <?php echo date("m/j/Y",strtotime($content->start_time))?> - <?php echo date("m/j/Y",strtotime($content->end_time))?></span>
+       (<?php echo $time_range?> <?php echo $time_units?><?php echo $time_range==1?'':'s'?>)
+       <h2>Submitted by <strong><a href="<?php echo ADMIN_URL.'/users/show/'.$submitter->username?>"><?php echo $submitter->name?></a></strong></h2>
       </a>
     </td>
   </tr>

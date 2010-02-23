@@ -24,25 +24,25 @@
  * @version      $Revision$
  */
 ?><?php if ($this->canEdit) {?>
-<a href="<?=ADMIN_URL.'/groups/add/'.$this->group->id ?>"><span class="buttonsel"><div class="buttonleft"><img src="<?= ADMIN_BASE_URL ?>/images/buttonsel_left.gif" border="0" alt="" /></div><div class="buttonmid"><div class="buttonmid_padding">Add a User</div></div><div class="buttonright"><img src="<?= ADMIN_BASE_URL ?>/images/buttonsel_right.gif" border="0" alt="" /></div></span></a>
-<a href="<?=ADMIN_URL.'/groups/remove/'.$this->group->id ?>"><span class="buttonsel"><div class="buttonleft"><img src="<?= ADMIN_BASE_URL ?>/images/buttonsel_left.gif" border="0" alt="" /></div><div class="buttonmid"><div class="buttonmid_padding">Remove a User</div></div><div class="buttonright"><img src="<?= ADMIN_BASE_URL ?>/images/buttonsel_right.gif" border="0" alt="" /></div></span></a>
-<a href="<?=ADMIN_URL.'/groups/delete/'.$this->group->id ?>"><span class="buttonsel"><div class="buttonleft"><img src="<?= ADMIN_BASE_URL ?>/images/buttonsel_left.gif" border="0" alt="" /></div><div class="buttonmid"><div class="buttonmid_padding">Delete Group</div></div><div class="buttonright"><img src="<?= ADMIN_BASE_URL ?>/images/buttonsel_right.gif" border="0" alt="" /></div></span></a><div style="clear:both;height:12px;"></div>
+<a href="<?php echo ADMIN_URL.'/groups/add/'.$this->group->id ?>"><span class="buttonsel"><div class="buttonleft"><img src="<?php echo ADMIN_BASE_URL ?>/images/buttonsel_left.gif" border="0" alt="" /></div><div class="buttonmid"><div class="buttonmid_padding">Add a User</div></div><div class="buttonright"><img src="<?php echo ADMIN_BASE_URL ?>/images/buttonsel_right.gif" border="0" alt="" /></div></span></a>
+<a href="<?php echo ADMIN_URL.'/groups/remove/'.$this->group->id ?>"><span class="buttonsel"><div class="buttonleft"><img src="<?php echo ADMIN_BASE_URL ?>/images/buttonsel_left.gif" border="0" alt="" /></div><div class="buttonmid"><div class="buttonmid_padding">Remove a User</div></div><div class="buttonright"><img src="<?php echo ADMIN_BASE_URL ?>/images/buttonsel_right.gif" border="0" alt="" /></div></span></a>
+<a href="<?php echo ADMIN_URL.'/groups/delete/'.$this->group->id ?>"><span class="buttonsel"><div class="buttonleft"><img src="<?php echo ADMIN_BASE_URL ?>/images/buttonsel_left.gif" border="0" alt="" /></div><div class="buttonmid"><div class="buttonmid_padding">Delete Group</div></div><div class="buttonright"><img src="<?php echo ADMIN_BASE_URL ?>/images/buttonsel_right.gif" border="0" alt="" /></div></span></a><div style="clear:both;height:12px;"></div>
 <?php } ?>
 </p>
 
       <h3>Members:</h3>
       <ul>
-	<? if(is_array($this->group->get_members())) 
+	<?php if(is_array($this->group->get_members())) 
 	foreach ($this->group->get_members() as $user) { ?>
-	   <li><a href="<?echo ADMIN_URL ?>/users/show/<?echo $user->username ?>"><?echo $user->name ?></a>
-	   <?if ($this->canEdit) { ?>
-           ( <a href="<?echo ADMIN_URL ?>/groups/remove/<?echo $this->group->id ?>?user=<?echo $user->username?>">Remove</a> )	     
-	   <? } ?>
+	   <li><a href="<?php echo ADMIN_URL ?>/users/show/<?php echo $user->username ?>"><?php echo $user->name ?></a>
+	   <?php if ($this->canEdit) { ?>
+           ( <a href="<?php echo ADMIN_URL ?>/groups/remove/<?php echo $this->group->id ?>?user=<?php echo $user->username?>">Remove</a> )	     
+	   <?php } ?>
 	 </li>
-	<? }  else echo "<p>None</p>";?> 
+	<?php }  else echo "<p>None</p>";?> 
       </ul>
 
-	<?if(is_array($this->feeds)&&count($this->feeds)>0) { ?>
+	<?php if(is_array($this->feeds)&&count($this->feeds)>0) { ?>
 	<br />
 	<h3>Feeds:</h3>
 	
@@ -55,7 +55,7 @@
 	?>
 	<tr>
 			<td>
-				<h1><a style="color:#000 !important;" href="<?= ADMIN_URL?>/browse/feed/<?= $feed->id ?>"><?= htmlspecialchars($feed->name) ?> Feed</a></h1>
+				<h1><a style="color:#000 !important;" href="<?php echo ADMIN_URL?>/browse/feed/<?php echo $feed->id ?>"><?php echo htmlspecialchars($feed->name) ?> Feed</a></h1>
 				<?php
 				$list = array();
 				foreach($types as $type_id => $type_name) {
@@ -71,17 +71,17 @@
 				?>
 			</td>
 			<td>
-         <h4>Expired Content: <?=$feed->content_count('1','expired');?></h4>
+         <h4>Expired Content: <?php echo $feed->content_count('1','expired');?></h4>
 			</td>
 	</tr>
-	<? } ?>
+	<?php } ?>
 	</table>
 
 	
 
-	<? } ?>
+	<?php } ?>
 
-	<? if(is_array($this->screens)&&count($this->screens)>0) { ?>
+	<?php if(is_array($this->screens)&&count($this->screens)>0) { ?>
 	<br />
 	<h3>Screens:</h3>
 	<?php
@@ -139,26 +139,26 @@ foreach($this->screens as $screen){
       }
    }
 	?>
-  <a href="<?echo ADMIN_URL?>/screens/show/<? echo $screen->id ?>">
+  <a href="<?php echo ADMIN_URL?>/screens/show/<?php echo $screen->id ?>">
     <div class="roundcont roundcont_sf">
-			<div class="roundtop"><span class="rt"><img src="<? echo ADMIN_BASE_URL ?>/images/blsp.gif" height="6" width="1" alt="" /></span></div>
+			<div class="roundtop"><span class="rt"><img src="<?php echo ADMIN_BASE_URL ?>/images/blsp.gif" height="6" width="1" alt="" /></span></div>
 			<div class="roundcont_main sf">
-				<img src="<?echo ADMIN_BASE_URL?>/images/<?echo $scrimg?>" height="100" alt="" /><br />
+				<img src="<?php echo ADMIN_BASE_URL?>/images/<?php echo $scrimg?>" height="100" alt="" /><br />
 				<div class="sf_header">
-					<p style="color:<? echo $statcolor ?>;"><? echo $status ?></p>
-					<h1><? echo $screen->name?></h1>
-					<h2><? echo $screen->location?></h2>
+					<p style="color:<?php echo $statcolor ?>;"><?php echo $status ?></p>
+					<h1><?php echo $screen->name?></h1>
+					<h2><?php echo $screen->location?></h2>
 				</div>
 				<div style="clear:both;"></div>
 			</div>
-			<div class="roundbottom"><span class="rb"><img src="<? echo ADMIN_BASE_URL ?>/images/blsp.gif" height="6" width="1" alt="" /></span></div>
+			<div class="roundbottom"><span class="rb"><img src="<?php echo ADMIN_BASE_URL ?>/images/blsp.gif" height="6" width="1" alt="" /></span></div>
 		</div>
   </a>
 
 	<?php
 	}
 	?>
-	<? } ?>
+	<?php } ?>
 
 
 

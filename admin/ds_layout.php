@@ -29,32 +29,32 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
 <title><?php echo join(' - ',array($this->getTitle(), 'Concerto Panel'));?></title>
-<link rel="stylesheet" type="text/css" href="<?=ADMIN_BASE_URL?>css/admin_new.css" />
-<link rel="stylesheet" type="text/css" href="<?=ADMIN_BASE_URL?>css/fp_new.css" />
-<link rel="stylesheet" type="text/css" href="<?=ADMIN_BASE_URL?>css/ui.lightbox.css" />
-<link rel="stylesheet" type="text/css" href="<?=ADMIN_BASE_URL?>css/ui.tablesort.css" />
-<link rel="stylesheet" type="text/css" href="<?=ADMIN_BASE_URL?>css/ui.jquery.css" />
+<link rel="stylesheet" type="text/css" href="<?php echo ADMIN_BASE_URL?>css/admin_new.css" />
+<link rel="stylesheet" type="text/css" href="<?php echo ADMIN_BASE_URL?>css/fp_new.css" />
+<link rel="stylesheet" type="text/css" href="<?php echo ADMIN_BASE_URL?>css/ui.lightbox.css" />
+<link rel="stylesheet" type="text/css" href="<?php echo ADMIN_BASE_URL?>css/ui.tablesort.css" />
+<link rel="stylesheet" type="text/css" href="<?php echo ADMIN_BASE_URL?>css/ui.jquery.css" />
 
 <!--[if IE]>
-<link rel="stylesheet" type="text/css" href="<?=ADMIN_BASE_URL?>css/ieonly.css" />
+<link rel="stylesheet" type="text/css" href="<?php echo ADMIN_BASE_URL?>css/ieonly.css" />
 <![endif]-->
 
 <!--[if lt IE 7.]>
-<link rel="stylesheet" type="text/css" href="<?=ADMIN_BASE_URL?>css/ie6.css" />
-<script defer type="text/javascript" src="<?=ADMIN_BASE_URL?>js/pngfix.js"></script>
+<link rel="stylesheet" type="text/css" href="<?php echo ADMIN_BASE_URL?>css/ie6.css" />
+<script defer type="text/javascript" src="<?php echo ADMIN_BASE_URL?>js/pngfix.js"></script>
 <![endif]-->
 
-<script type="text/javascript" src="<?=ADMIN_BASE_URL?>js/jquery.js"></script>
-<script type="text/javascript" src="<?=ADMIN_BASE_URL?>js/ui.lightbox.js"></script>
-<script type="text/javascript" src="<?=ADMIN_BASE_URL?>js/ui.tablesort.js"></script>
-<script type="text/javascript" src="<?=ADMIN_BASE_URL?>js/ui.jquery.js"></script>
+<script type="text/javascript" src="<?php echo ADMIN_BASE_URL?>js/jquery.js"></script>
+<script type="text/javascript" src="<?php echo ADMIN_BASE_URL?>js/ui.lightbox.js"></script>
+<script type="text/javascript" src="<?php echo ADMIN_BASE_URL?>js/ui.tablesort.js"></script>
+<script type="text/javascript" src="<?php echo ADMIN_BASE_URL?>js/ui.jquery.js"></script>
 
-<meta name="generator" content="Concerto <?= CONCERTO_VERSION ?>">
+<meta name="generator" content="Concerto <?php echo CONCERTO_VERSION ?>">
 <meta name="application-name" content="Concerto"/>
 <meta name="description" content="RPI Digital Signage for Everyone."/>
-<meta name="application-url" content="http://<?=$_SERVER['SERVER_NAME'] . ADMIN_URL?>"/>
-<link rel="icon" href="<?=ADMIN_BASE_URL?>images/concerto_32x32.png" sizes="32x32"/>
-<link rel="icon" href="<?=ADMIN_BASE_URL?>images/concerto_48x48.png" sizes="48x48"/>
+<meta name="application-url" content="http://<?php echo $_SERVER['SERVER_NAME'] . ADMIN_URL?>"/>
+<link rel="icon" href="<?php echo ADMIN_BASE_URL?>images/concerto_32x32.png" sizes="32x32"/>
+<link rel="icon" href="<?php echo ADMIN_BASE_URL?>images/concerto_48x48.png" sizes="48x48"/>
 
 <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
 
@@ -65,14 +65,14 @@
 
 <div id="header">
   <div id="header_padding">
-    <? include("includes/menu_tabs.php"); ?>
+    <?php include("includes/menu_tabs.php"); ?>
   </div>
 </div>
 
 <div id="main">
 	<div id="content_header">
-	  <h1><?=$this->getTitle()?></h1>
-	  <h2><?=$this->getCrumbs()?></h2>
+	  <h1><?php echo $this->getTitle()?></h1>
+	  <h2><?php echo $this->getCrumbs()?></h2>
 	</div>
 	
 	<div id="maincontent">
@@ -83,14 +83,14 @@
 </div>
 
 <!-- BEGIN Sidebar -->
-<? include("includes/left_menu.php"); ?>
+<?php include("includes/left_menu.php"); ?>
 <!-- END Sidebar -->
 
 <div id="footer_gutter">&nbsp;</div>
 <div id="footer">
   <div id="footer_padding">
     <p>Copyright &copy; 2009 Rensselaer Polytechnic Institute (<a href="http://webtech.union.rpi.edu">Web Technologies Group</a>)</p>
-    <p><a href="<?= ADMIN_URL ?>/pages/show/docs/">Support Center</a> | <a href="http://webtech.union.rpi.edu/ticket">Submit Help Ticket</a> | <a href="mailto:<?= SYSTEM_EMAIL ?>">Contact Us</a></p>
+    <p><a href="<?php echo ADMIN_URL ?>/pages/show/docs/">Support Center</a> | <a href="http://webtech.union.rpi.edu/ticket">Submit Help Ticket</a> | <a href="mailto:<?php echo SYSTEM_EMAIL ?>">Contact Us</a></p>
   </div>
 </div>
 <?php if(defined('GA_TRACKING') && GA_TRACKING) { ?>
@@ -99,7 +99,7 @@ var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "htt
 document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
 </script>
 <script type="text/javascript">
-var pageTracker = _gat._getTracker("<?= GA_TRACKING ?>");
+var pageTracker = _gat._getTracker("<?php echo GA_TRACKING ?>");
 pageTracker._trackPageview();
 </script>
 <?php } ?>

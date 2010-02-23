@@ -25,7 +25,7 @@
  */
 ?><h3>Please fill out all fields to create a new Feed.</h3>
 
-<form method="POST" action="<?=ADMIN_URL?>/feeds/create">
+<form method="POST" action="<?php echo ADMIN_URL?>/feeds/create">
 <?php 
         include("_form.php");
 ?>

@@ -23,7 +23,7 @@
  * @license      GPLv2, see www.gnu.org/licenses/gpl-2.0.html
  * @version      $Revision$
  */
-?><form method="POST" action="<?=ADMIN_URL?>/users/update/<?=$this->user->username?>">
+?><form method="POST" action="<?php echo ADMIN_URL?>/users/update/<?php echo $this->user->username?>">
 <?php 
 	include("_form.php");
 ?>

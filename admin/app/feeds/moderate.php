@@ -30,7 +30,7 @@ if(is_array($this->contents))
 foreach(array_keys($this->contents) as $field)
      $urls[]='<a href="#'.$field.'">'.$field.'</a>';
 ?>
-<p>Jump to: <?=join(" | ", $urls)?>
+<p>Jump to: <?php echo join(" | ", $urls)?>
 </p>
 <?php
 } else {
@@ -52,28 +52,28 @@ foreach($this->contents as $field=>$contents)
       if(preg_match('/image/',$content->mime_type)) {
         $has_imagecol=1;
 ?>
-    <td<? if (!$notfirst) echo ' class="firstrow"'; ?>>
-    <a href="<?= ADMIN_URL?>/content/show/<?= $content->id ?>"> 
-    <img src="<?= ADMIN_URL?>/content/image/<?= $content->id ?>?width=200&height=150" />
+    <td<?php if (!$notfirst) echo ' class="firstrow"'; ?>>
+    <a href="<?php echo ADMIN_URL?>/content/show/<?php echo $content->id ?>"> 
+    <img src="<?php echo ADMIN_URL?>/content/image/<?php echo $content->id ?>?width=200&height=150" />
     </a>
     </td>
 <?php
       }
 ?>
 
-    <td class="edit_col<? if (!$notfirst) {$notfirst =1;  echo ' firstrow';} ?>"
-        <?if(!$has_imagecol) echo "colspan=2";?>>
-      <a href="<?= ADMIN_URL?>/content/show/<? echo $content->id ?>">
-       <h1><a href="<?= ADMIN_URL?>/content/show/<? echo $content->id ?>"><?=$content->name?></a></h1>
+    <td class="edit_col<?php if (!$notfirst) {$notfirst =1;  echo ' firstrow';} ?>"
+        <?php if(!$has_imagecol) echo "colspan=2";?>>
+      <a href="<?php echo ADMIN_URL?>/content/show/<?php echo $content->id ?>">
+       <h1><a href="<?php echo ADMIN_URL?>/content/show/<?php echo $content->id ?>"><?php echo $content->name?></a></h1>
        <span style="font-size:1.5em;font-weight:bold;color:#333;margin-bottom:12px;">
 <?php
           if($content->mime_type == "text/plain")
              echo "$content->content<br/>\n";
 ?>
-       <?=date("m/j/Y",strtotime($content->start_time))?> - <?=date("m/j/Y",strtotime($content->end_time))?></span>
-       <h2>Submitted by <strong><a href="<?=ADMIN_URL.'/users/show/'.$submitter->username?>"><?=$submitter->name?></a></strong></h2>
-       <p><a href="<?=ADMIN_URL.'/feeds/approve/'.$this->feed->id.'/'.$content->id?>">Approve</a> |
-          <a href="<?=ADMIN_URL.'/feeds/deny/'.$this->feed->id.'/'.$content->id?>">Deny</a></p>
+       <?php echo date("m/j/Y",strtotime($content->start_time))?> - <?php echo date("m/j/Y",strtotime($content->end_time))?></span>
+       <h2>Submitted by <strong><a href="<?php echo ADMIN_URL.'/users/show/'.$submitter->username?>"><?php echo $submitter->name?></a></strong></h2>
+       <p><a href="<?php echo ADMIN_URL.'/feeds/approve/'.$this->feed->id.'/'.$content->id?>">Approve</a> |
+          <a href="<?php echo ADMIN_URL.'/feeds/deny/'.$this->feed->id.'/'.$content->id?>">Deny</a></p>
 
       </a>
     </td>

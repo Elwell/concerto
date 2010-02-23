@@ -24,7 +24,7 @@
  * @version      $Revision$
  */
 ?><div>
-<?
+<?php
 $dat = $_REQUEST;
 $feed = new Feed($dat['feed_id']);
 if(!$feed->set){

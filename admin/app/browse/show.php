@@ -31,9 +31,9 @@
                 $(this).data("loaded", 0);
                 var parent = this;
                 $.ajax({type: "POST",
-                        url: "<?=ADMIN_URL?>/browse/details",
+                        url: "<?php echo ADMIN_URL?>/browse/details",
                         data: {"content_id": $(parent).attr("id").replace(/c/,""),
-                               "feed_id": <?=$this->feed->id?>
+                               "feed_id": <?php echo $this->feed->id?>
                         },
                         success: function(html){
                             $("<tr>").attr("class", "details")
@@ -42,8 +42,8 @@
                             .insertAfter(parent)
                             .find("#i-preview").lightBox({
                                 overlayBgColor: "#000",
-                                imageLoading: "<?=ADMIN_BASE_URL?>images/lightbox-ico-loading.gif",
-                                imageBtnClose: "<?=ADMIN_BASE_URL?>images/lightbox-btn-close.gif"
+                                imageLoading: "<?php echo ADMIN_BASE_URL?>images/lightbox-ico-loading.gif",
+                                imageBtnClose: "<?php echo ADMIN_BASE_URL?>images/lightbox-btn-close.gif"
                             });
                             $(parent).data("loaded", 1).expand_details();
                         },
@@ -103,21 +103,21 @@
     });
 })(jQuery);
 //--></script>
-<?
+<?php
 if(($this->feed->type == 4) && ($this->feed->dyn->needs_update() > 0)){
 ?>
-<p class="dyn_stat"><b>Currently Processing:</b>&nbsp;&nbsp;&nbsp;This dynamic feed has <?=$this->feed->dyn->needs_update()?> unprocessed item(s).  It should be ready within a couple minutes.</p>
-<?
+<p class="dyn_stat"><b>Currently Processing:</b>&nbsp;&nbsp;&nbsp;This dynamic feed has <?php echo $this->feed->dyn->needs_update()?> unprocessed item(s).  It should be ready within a couple minutes.</p>
+<?php
 }
 ?>
 
 
 <div style="float:left; width:70%;">
 	<ul id="maintab" class="ui-tabs-nav">
-		<li class="first<?php if(!isset($this->args[4])) { ?> ui-tabs-selected<?php } ?>"><a class="approved" href="<?= ADMIN_URL ?>/browse/show/<?= $this->feed->id ?>/type/<?= $this->type_id ?>"><h1>Active</h1></a></li>
-		<li class="<?php if($this->feed->user_priv($_SESSION['user'], "moderate")) { ?>middle<?php } else { ?>last<?php } ?><?php if($this->args[4] == "expired") { ?> ui-tabs-selected<?php } ?>"><a class="expired" href="<?= ADMIN_URL ?>/browse/show/<?= $this->feed->id ?>/type/<?= $this->type_id ?>/expired"><h1>Expired</h1></a></li>
+		<li class="first<?php if(!isset($this->args[4])) { ?> ui-tabs-selected<?php } ?>"><a class="approved" href="<?php echo ADMIN_URL ?>/browse/show/<?php echo $this->feed->id ?>/type/<?php echo $this->type_id ?>"><h1>Active</h1></a></li>
+		<li class="<?php if($this->feed->user_priv($_SESSION['user'], "moderate")) { ?>middle<?php } else { ?>last<?php } ?><?php if($this->args[4] == "expired") { ?> ui-tabs-selected<?php } ?>"><a class="expired" href="<?php echo ADMIN_URL ?>/browse/show/<?php echo $this->feed->id ?>/type/<?php echo $this->type_id ?>/expired"><h1>Expired</h1></a></li>
 <?php if($this->feed->user_priv($_SESSION['user'], "moderate")) { ?>
-		<li class="last<?php if($this->args[4] == "declined") { ?> ui-tabs-selected<?php } ?>"><a class="denied" href="<?= ADMIN_URL ?>/browse/show/<?= $this->feed->id ?>/type/<?= $this->type_id ?>/declined"><h1>Declined</h1></a></li>
+		<li class="last<?php if($this->args[4] == "declined") { ?> ui-tabs-selected<?php } ?>"><a class="denied" href="<?php echo ADMIN_URL ?>/browse/show/<?php echo $this->feed->id ?>/type/<?php echo $this->type_id ?>/declined"><h1>Declined</h1></a></li>
 <?php } ?>
 	</ul>
 
@@ -129,7 +129,7 @@ if(($this->feed->type == 4) && ($this->feed->dyn->needs_update() > 0)){
 </div>
 <br class="funkybreak" />
 <div class="roundcont">
-  <div class="roundtop"><span class="rt"><img src="<? echo ADMIN_BASE_URL ?>/images/blsp.gif" height="6" width="1" alt="" /></span></div>
+  <div class="roundtop"><span class="rt"><img src="<?php echo ADMIN_BASE_URL ?>/images/blsp.gif" height="6" width="1" alt="" /></span></div>
   <div class="roundcont_main" style="padding:14px 18px;">
   
 		<table class="content_listing" cellpadding="6" cellspacing="0">
@@ -148,7 +148,7 @@ if(($this->feed->type == 4) && ($this->feed->dyn->needs_update() > 0)){
 				foreach($this->contents as $content) {
 						$submitter = new User($content->user_id);
 		?>
-						<tr id="c<?= $content->id ?>" class="listitem">
+						<tr id="c<?php echo $content->id ?>" class="listitem">
 								<td class="listh_icon"><?php
 									if(preg_match('/image/',$content->mime_type)) {
 										echo "<img class=\"icon_border\" src=\"".ADMIN_URL."/content/image/$content->id?width=50&amp;height=37\" alt=\"Icon\" />";
@@ -158,10 +158,10 @@ if(($this->feed->type == 4) && ($this->feed->dyn->needs_update() > 0)){
 										echo "&nbsp;";
 									} ?></td>
 								<td class="listtitle">
-										<a href="<?= ADMIN_URL ?>/content/show/<?= $content->id ?>"><?= $content->name ?></a>
+										<a href="<?php echo ADMIN_URL ?>/content/show/<?php echo $content->id ?>"><?php echo $content->name ?></a>
 								</td>
-								<td><?=date("m/j/Y",strtotime($content->start_time))?></td>
-								<td><?=date("m/j/Y",strtotime($content->end_time))?></td>
+								<td><?php echo date("m/j/Y",strtotime($content->start_time))?></td>
+								<td><?php echo date("m/j/Y",strtotime($content->end_time))?></td>
 								<td><?php $user = new User($content->user_id); echo htmlspecialchars($user->name) ?></td>
 						</tr>
 		<?php
@@ -176,5 +176,5 @@ if(($this->feed->type == 4) && ($this->feed->dyn->needs_update() > 0)){
 		</table>
 		
   </div>
-  <div class="roundbottom"><span class="rb"><img src="<? echo ADMIN_BASE_URL ?>/images/blsp.gif" height="6" width="1" alt="" /></span></div>
+  <div class="roundbottom"><span class="rb"><img src="<?php echo ADMIN_BASE_URL ?>/images/blsp.gif" height="6" width="1" alt="" /></span></div>
 </div>

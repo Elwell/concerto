@@ -23,7 +23,7 @@
  * @license      GPLv2, see www.gnu.org/licenses/gpl-2.0.html
  * @version      $Revision$
  */
-?><form method="POST" action="<?=ADMIN_URL?>/screens/update/<?=$this->screen->id?>">
+?><form method="POST" action="<?php echo ADMIN_URL?>/screens/update/<?php echo $this->screen->id?>">
 <?php 
 	include("_form.php");
 ?>

@@ -38,7 +38,7 @@
                           title: "Loading..."
                         });
             $.ajax({type: "GET",
-                    url: "<?=ADMIN_URL?>/moderate/confirm/" + action + "/<?=$this->feed->id?>/" + content_id + "/ajax",
+                    url: "<?php echo ADMIN_URL?>/moderate/confirm/" + action + "/<?php echo $this->feed->id?>/" + content_id + "/ajax",
                     success: function(html){
                         $(html)
                             .dialog({
@@ -48,10 +48,10 @@
                                         var posts = $(this).serializeArray();
                                         var actions = $(parent).prev().find("td.actions");
                                         var onError = function(){
-                                            window.location = "<?=ADMIN_URL?>/moderate/confirm/" + action + "/<?=$this->feed->id?>/" + content_id;
+                                            window.location = "<?php echo ADMIN_URL?>/moderate/confirm/" + action + "/<?php echo $this->feed->id?>/" + content_id;
                                         };
                                         $.ajax({type: "POST",
-                                                url: "<?=ADMIN_URL?>/moderate/post",
+                                                url: "<?php echo ADMIN_URL?>/moderate/post",
                                                 data: posts,
                                                 success: function(json){
                                                     if(json == true) {
@@ -103,8 +103,8 @@
         $(".i-preview").each(function(){
             $(this).lightBox({
                 overlayBgColor: "#000",
-                imageLoading: "<?=ADMIN_BASE_URL?>images/lightbox-ico-loading.gif",
-                imageBtnClose: "<?=ADMIN_BASE_URL?>images/lightbox-btn-close.gif"
+                imageLoading: "<?php echo ADMIN_BASE_URL?>images/lightbox-ico-loading.gif",
+                imageBtnClose: "<?php echo ADMIN_BASE_URL?>images/lightbox-btn-close.gif"
             });
         });
     });
@@ -140,31 +140,31 @@ if(isset($this->contents)) {
                 echo "&nbsp;";
               } ?></td>
             <td class="listtitle">
-                <a href="<?= ADMIN_URL ?>/content/show/<?= $content->id ?>"><?= $content->name ?></a>
+                <a href="<?php echo ADMIN_URL ?>/content/show/<?php echo $content->id ?>"><?php echo $content->name ?></a>
             </td>
-            <td><?=date("m/j/y",strtotime($content->start_time))?></td>
-            <td><?=date("m/j/y",strtotime($content->end_time))?></td>
+            <td><?php echo date("m/j/y",strtotime($content->start_time))?></td>
+            <td><?php echo date("m/j/y",strtotime($content->end_time))?></td>
             <td><?php $user = new User($content->user_id); echo $user->name ?></td>    
         </tr>
-        <tr id="c<?=$content->id?>" class="details">
+        <tr id="c<?php echo $content->id?>" class="details">
             <td class="actions">
-                <a class="approve" title="Approve Content" href="<?=ADMIN_URL?>/moderate/confirm/approve/<?=$this->feed->id?>/<?=$content->id?>"><span class="approve">Approve <img border="0" src="<?= ADMIN_BASE_URL ?>images/mod_check.gif" alt="" /></span></a>
-                <a class="deny" title="Deny Content" href="<?=ADMIN_URL?>/moderate/confirm/deny/<?=$this->feed->id?>/<?=$content->id?>"><span class="deny">Deny <img border="0" src="<?= ADMIN_BASE_URL ?>images/mod_ex.gif" alt="" /></span></a>
+                <a class="approve" title="Approve Content" href="<?php echo ADMIN_URL?>/moderate/confirm/approve/<?php echo $this->feed->id?>/<?php echo $content->id?>"><span class="approve">Approve <img border="0" src="<?php echo ADMIN_BASE_URL ?>images/mod_check.gif" alt="" /></span></a>
+                <a class="deny" title="Deny Content" href="<?php echo ADMIN_URL?>/moderate/confirm/deny/<?php echo $this->feed->id?>/<?php echo $content->id?>"><span class="deny">Deny <img border="0" src="<?php echo ADMIN_BASE_URL ?>images/mod_ex.gif" alt="" /></span></a>
             </td>
             <td colspan="5">
 <table>
 <tr>
-<td class="preview <? if(preg_match('/text/',$content->mime_type)) { echo " text_bg"; } ?>" style="width:250px">
-<? if(preg_match('/image/',$content->mime_type)) { ?>
-    <a class="i-preview" href="<?= ADMIN_URL ?>/content/image/<?= $content->id ?>"><img src="<?= ADMIN_URL ?>/content/image/<?= $content->id ?>?width=250&amp;height=200" alt="" /></a>
-<? } elseif(preg_match('/text/',$content->mime_type)) { ?>
-    <span class="emph"><?= $content->content ?></span>
-<? } ?>
+<td class="preview <?php if(preg_match('/text/',$content->mime_type)) { echo " text_bg"; } ?>" style="width:250px">
+<?php if(preg_match('/image/',$content->mime_type)) { ?>
+    <a class="i-preview" href="<?php echo ADMIN_URL ?>/content/image/<?php echo $content->id ?>"><img src="<?php echo ADMIN_URL ?>/content/image/<?php echo $content->id ?>?width=250&amp;height=200" alt="" /></a>
+<?php } elseif(preg_match('/text/',$content->mime_type)) { ?>
+    <span class="emph"><?php echo $content->content ?></span>
+<?php } ?>
 </td>
 <td>
-    <h1><a href="<?= ADMIN_URL ?>/content/show/<?= $content->id ?>"><?= $content->name ?></a></h1>
-    <span style="font-size:1.5em;font-weight:bold;color:#333;margin-bottom:12px;"><?= date('M j, Y h:i:s A',strtotime($content->start_time)) ?> - <?= date('M j, Y h:i:s A',strtotime($content->end_time)) ?></span> <? if($week_range > 1) echo "({$week_range} Weeks)" ?>
-    <h2>Submitted by <strong><a href="<?= ADMIN_URL ?>/users/show/<?= $submitter->id ?>"><?= $submitter->name ?></a></strong></h2>
+    <h1><a href="<?php echo ADMIN_URL ?>/content/show/<?php echo $content->id ?>"><?php echo $content->name ?></a></h1>
+    <span style="font-size:1.5em;font-weight:bold;color:#333;margin-bottom:12px;"><?php echo date('M j, Y h:i:s A',strtotime($content->start_time)) ?> - <?php echo date('M j, Y h:i:s A',strtotime($content->end_time)) ?></span> <?php if($week_range > 1) echo "({$week_range} Weeks)" ?>
+    <h2>Submitted by <strong><a href="<?php echo ADMIN_URL ?>/users/show/<?php echo $submitter->id ?>"><?php echo $submitter->name ?></a></strong></h2>
     <p>
     <?php $content->content = new Content($content->args[1]); ?>
     <?php
@@ -197,12 +197,12 @@ if(isset($this->contents)) {
 </table>
             </td>
         </tr>
-<?
+<?php
    }
 } else {
 ?>
         <tr><td colspan="6">No content awaiting moderation found</td></tr>
-<?
+<?php
 }
 ?>
     </tbody>

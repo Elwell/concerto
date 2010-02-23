@@ -37,7 +37,7 @@ $(function()
 		event.preventDefault();
 	if($(this).data("news"))
 		return;
-      $.post("<?= ADMIN_URL ?>/users/notifications/<?= $this->user->username ?>", {'start': $("#news_expand").data('items'), 'num': 7}, function(data) {
+      $.post("<?php echo ADMIN_URL ?>/users/notifications/<?php echo $this->user->username ?>", {'start': $("#news_expand").data('items'), 'num': 7}, function(data) {
          $("<div>").css("overflow", "hidden").html(data).hide().appendTo($("#news_expand")).slideDown("slow");
                $("#news_expand").data('items',$("#news_expand").data('items')+7);
                if( data == "" ) {
@@ -51,11 +51,11 @@ $(function()
 //--></script>
 
 <?php if ($this->canEdit) {?>
-<a href="<?=ADMIN_URL.'/users/edit/'.$this->user->username ?>"><span class="buttonsel"><div class="buttonleft"><img src="<?= ADMIN_BASE_URL ?>/images/buttonsel_left.gif" border="0" alt="" /></div><div class="buttonmid"><div class="buttonmid_padding">Edit Profile</div></div><div class="buttonright"><img src="<?= ADMIN_BASE_URL ?>/images/buttonsel_right.gif" border="0" alt="" /></div></span></a><div style="clear:both;height:12px;"></div>
+<a href="<?php echo ADMIN_URL.'/users/edit/'.$this->user->username ?>"><span class="buttonsel"><div class="buttonleft"><img src="<?php echo ADMIN_BASE_URL ?>/images/buttonsel_left.gif" border="0" alt="" /></div><div class="buttonmid"><div class="buttonmid_padding">Edit Profile</div></div><div class="buttonright"><img src="<?php echo ADMIN_BASE_URL ?>/images/buttonsel_right.gif" border="0" alt="" /></div></span></a><div style="clear:both;height:12px;"></div>
 </a>
 <?php } ?>
 </p>
-<h3>Username: <span class="emph"><? echo $this->user->username?></span></h3>
+<h3>Username: <span class="emph"><?php echo $this->user->username?></span></h3>
 <h3>Groups:</h3>
 <ul>
 <?php
@@ -70,10 +70,10 @@ $(function()
 
 <br />
 <div class="roundcont newsfeed">
-  <div class="roundtop"><span class="rt"><img src="<? echo ADMIN_BASE_URL ?>/images/blsp.gif" height="6" width="1" alt="" /></span></div>
+  <div class="roundtop"><span class="rt"><img src="<?php echo ADMIN_BASE_URL ?>/images/blsp.gif" height="6" width="1" alt="" /></span></div>
   <div class="roundcont_main">
     <div style="text-align:right; float:right; width:85px;">
-    	<a href="<?= ADMIN_URL ?>/users/newsfeed/<?=$this->user->username ?>"><span class="buttonsel"><div class="buttonleft"><img src="<?= ADMIN_BASE_URL ?>/images/buttonsel_left.gif" border="0" alt="" /></div><div class="buttonmid"><div class="buttonmid_padding">View All</div></div><div class="buttonright" style="width:10px;"><img src="<?= ADMIN_BASE_URL ?>/images/buttonsel_right.gif" border="0" alt="" /></div></span></a>
+    	<a href="<?php echo ADMIN_URL ?>/users/newsfeed/<?php echo $this->user->username ?>"><span class="buttonsel"><div class="buttonleft"><img src="<?php echo ADMIN_BASE_URL ?>/images/buttonsel_left.gif" border="0" alt="" /></div><div class="buttonmid"><div class="buttonmid_padding">View All</div></div><div class="buttonright" style="width:10px;"><img src="<?php echo ADMIN_BASE_URL ?>/images/buttonsel_right.gif" border="0" alt="" /></div></span></a>
     </div>
     <h1>News Feed</h1>
     <div id="news_expand">
@@ -81,7 +81,7 @@ $(function()
     if(is_array($this->notifications)) {
        foreach($this->notifications as $newsfeed) {
     ?>
-    	<p class="<?= $newsfeed->type ?>_<?= $newsfeed->msg ?>"><?= $newsfeed->text ?><span class="datesub"><?= date('M j', $newsfeed->timestamp) ?></span>
+    	<p class="<?php echo $newsfeed->type ?>_<?php echo $newsfeed->msg ?>"><?php echo $newsfeed->text ?><span class="datesub"><?php echo date('M j', $newsfeed->timestamp) ?></span>
         <?php
           if($newsfeed->has_extra){
             echo '<br/><span class="newsfeed_reason">'.$newsfeed->additional.'</span>';
@@ -94,10 +94,10 @@ $(function()
     </div>
   </div>
   <span style="display:none;" id="seemore"><span id="seemore-inner">View more...</span></span>
-  <noscript><div class="roundbottom"><span class="rb"><img src="<? echo ADMIN_BASE_URL ?>/images/blsp.gif" height="6" width="1" alt="" /></span></div></noscript>
+  <noscript><div class="roundbottom"><span class="rb"><img src="<?php echo ADMIN_BASE_URL ?>/images/blsp.gif" height="6" width="1" alt="" /></span></div></noscript>
 </div>
 
-<? } ?>
+<?php } ?>
 <br />
 <ul id="maintab">
 	<li class="first"><a class="approved" href="#approved"><h1>Approved</h1></a></li>
@@ -106,7 +106,7 @@ $(function()
 </ul>
 <br class="funkybreak" />
 <div id="submissions" class="roundcont">
-  <div class="roundtop"><span class="rt"><img src="<? echo ADMIN_BASE_URL ?>/images/blsp.gif" height="6" width="1" alt="" /></span></div>
+  <div class="roundtop"><span class="rt"><img src="<?php echo ADMIN_BASE_URL ?>/images/blsp.gif" height="6" width="1" alt="" /></span></div>
   <div class="roundcont_main">
 
 <div id="approved" class="contentstyle">
@@ -118,7 +118,7 @@ if(array_key_exists('contents', $this) && array_key_exists('approved', $this->co
 {
 foreach(array_keys($this->contents['approved']) as $field)
   $urls[]='<a href="#approved_'.$field.'">'.$field.'</a>'; ?>
-	<p>Jump to: <?=join(" | ", $urls)?></p>
+	<p>Jump to: <?php echo join(" | ", $urls)?></p>
 	<?php
 } else {
 	echo "<p><em>This user has had no content approved on one or more feeds.</em></p>";
@@ -143,7 +143,7 @@ foreach($this->contents['approved'] as $field=>$contents)
 	if($contents){
 			foreach($contents as $content) {
 					$submitter = new User($content->user_id); ?>
-					<tr id="c<?= $content->id ?>" class="listitem listitem_none">
+					<tr id="c<?php echo $content->id ?>" class="listitem listitem_none">
 							<td class="listh_icon"><?php
 								if(preg_match('/image/',$content->mime_type)) {
 									echo "<a href=\"" .ADMIN_URL. "/content/show/$content->id\"><img class=\"icon_border\" src=\"".ADMIN_URL."/content/image/$content->id?width=50&amp;height=37\" alt=\"Icon\" /></a>";
@@ -153,10 +153,10 @@ foreach($this->contents['approved'] as $field=>$contents)
 									echo "&nbsp;";
 								} ?></td>
 							<td class="listtitle">
-									<a href="<?= ADMIN_URL ?>/content/show/<?= $content->id ?>"><?= htmlspecialchars($content->name) ?></a>
+									<a href="<?php echo ADMIN_URL ?>/content/show/<?php echo $content->id ?>"><?php echo htmlspecialchars($content->name) ?></a>
 							</td>
-							<td><?=date("m/j/Y",strtotime($content->start_time))?></td>
-							<td><?=date("m/j/Y",strtotime($content->end_time))?></td>
+							<td><?php echo date("m/j/Y",strtotime($content->start_time))?></td>
+							<td><?php echo date("m/j/Y",strtotime($content->end_time))?></td>
 					</tr>
 	<?php
 			}
@@ -184,7 +184,7 @@ if(is_array($this->contents['denied']) && count($this->contents['denied']>=1))
 {
 foreach(array_keys($this->contents['denied']) as $field)
   $urls[]='<a href="#denied_'.$field.'">'.$field.'</a>'; ?>
-	<p>Jump to: <?=join(" | ", $urls)?></p>
+	<p>Jump to: <?php echo join(" | ", $urls)?></p>
 	<?php
 } else {
 	echo "<p><em>This user has had no content denied on all feeds.</em></p>";
@@ -209,7 +209,7 @@ foreach($this->contents['denied'] as $field=>$contents)
 	if($contents){
 			foreach($contents as $content) {
 					$submitter = new User($content->user_id); ?>
-					<tr id="c<?= $content->id ?>" class="listitem listitem_none">
+					<tr id="c<?php echo $content->id ?>" class="listitem listitem_none">
 							<td class="listh_icon"><?php
 								if(preg_match('/image/',$content->mime_type)) {
 									echo "<a href=\"" .ADMIN_URL. "/content/show/$content->id\"><img class=\"icon_border\" src=\"".ADMIN_URL."/content/image/$content->id?width=50&amp;height=37\" alt=\"Icon\" /></a>";
@@ -219,10 +219,10 @@ foreach($this->contents['denied'] as $field=>$contents)
 									echo "&nbsp;";
 								} ?></td>
 							<td class="listtitle">
-									<a href="<?= ADMIN_URL ?>/content/show/<?= $content->id ?>"><?= htmlspecialchars($content->name) ?></a>
+									<a href="<?php echo ADMIN_URL ?>/content/show/<?php echo $content->id ?>"><?php echo htmlspecialchars($content->name) ?></a>
 							</td>
-							<td><?=date("m/j/Y",strtotime($content->start_time))?></td>
-							<td><?=date("m/j/Y",strtotime($content->end_time))?></td>
+							<td><?php echo date("m/j/Y",strtotime($content->start_time))?></td>
+							<td><?php echo date("m/j/Y",strtotime($content->end_time))?></td>
 					</tr>
 	<?php
 			}
@@ -250,7 +250,7 @@ if(is_array($this->contents['pending']) && count($this->contents['pending']>=1))
 {
 foreach(array_keys($this->contents['pending']) as $field)
   $urls[]='<a href="#pending_'.$field.'">'.$field.'</a>'; ?>
-	<p>Jump to: <?=join(" | ", $urls)?></p>
+	<p>Jump to: <?php echo join(" | ", $urls)?></p>
 	<?php
 } else {
 	echo "<p><em>This user has had no content pending moderation on all feeds.</em></p>";
@@ -275,7 +275,7 @@ foreach($this->contents['pending'] as $field=>$contents)
 	if($contents){
 			foreach($contents as $content) {
 					$submitter = new User($content->user_id); ?>
-					<tr id="c<?= $content->id ?>" class="listitem listitem_none">
+					<tr id="c<?php echo $content->id ?>" class="listitem listitem_none">
 							<td class="listh_icon"><?php
 								if(preg_match('/image/',$content->mime_type)) {
 									echo "<a href=\"" .ADMIN_URL. "/content/show/$content->id\"><img class=\"icon_border\" src=\"".ADMIN_URL."/content/image/$content->id?width=50&amp;height=37\" alt=\"Icon\" /></a>";
@@ -285,10 +285,10 @@ foreach($this->contents['pending'] as $field=>$contents)
 									echo "&nbsp;";
 								} ?></td>
 							<td class="listtitle">
-									<a href="<?= ADMIN_URL ?>/content/show/<?= $content->id ?>"><?= htmlspecialchars($content->name) ?></a>
+									<a href="<?php echo ADMIN_URL ?>/content/show/<?php echo $content->id ?>"><?php echo htmlspecialchars($content->name) ?></a>
 							</td>
-							<td><?=date("m/j/Y",strtotime($content->start_time))?></td>
-							<td><?=date("m/j/Y",strtotime($content->end_time))?></td>
+							<td><?php echo date("m/j/Y",strtotime($content->start_time))?></td>
+							<td><?php echo date("m/j/Y",strtotime($content->end_time))?></td>
 					</tr>
 	<?php
 			}
@@ -307,5 +307,5 @@ foreach($this->contents['pending'] as $field=>$contents)
 </div>
   </div>
 
-  <div class="roundbottom"><span class="rb"><img src="<? echo ADMIN_BASE_URL ?>/images/blsp.gif" height="6" width="1" alt="" /></span></div>
+  <div class="roundbottom"><span class="rb"><img src="<?php echo ADMIN_BASE_URL ?>/images/blsp.gif" height="6" width="1" alt="" /></span></div>
 </div>

@@ -1,4 +1,4 @@
-<?
+<?php
 /**
  * This file was developed as part of the Concerto digital signage project
  * at RPI.
@@ -182,27 +182,27 @@ function content_selection($criteria){
 function render_html($content_arr, $criteria){
     foreach($content_arr as $content){
     ?>
-<div id="concerto_<?= $content->id ?>" class="concerto">
-	<div class="concerto_name"><?= $content->name ?></div>
-<? if(false===strpos($content->mime_type,'image')){ ?>
-	<div class="concerto_content"><?= $content->content ?></div>
-<? } else { ?>
-	<div class="concerto_content"><img src="<?= 'http://' . $_SERVER['SERVER_NAME'] .  $_SERVER['SCRIPT_NAME'] . '?' . criteria_string($criteria) ?>&select=content&select_id=<?= $content->id ?>&format=raw" alt="<?= htmlspecialchars($content->name) ?>" /></div>
-<? } ?>
+<div id="concerto_<?php echo $content->id ?>" class="concerto">
+	<div class="concerto_name"><?php echo $content->name ?></div>
+<?php if(false===strpos($content->mime_type,'image')){ ?>
+	<div class="concerto_content"><?php echo $content->content ?></div>
+<?php } else { ?>
+	<div class="concerto_content"><img src="<?php echo 'http://' . $_SERVER['SERVER_NAME'] .  $_SERVER['SCRIPT_NAME'] . '?' . criteria_string($criteria) ?>&select=content&select_id=<?php echo $content->id ?>&format=raw" alt="<?php echo htmlspecialchars($content->name) ?>" /></div>
+<?php } ?>
 </div>
-<?
+<?php
     }
 }
 
 function render_rawhtml($content_arr, $criteria){
     foreach($content_arr as $content){
     ?>
-<? if(false===strpos($content->mime_type,'image')){ ?>
-    <?= $content->content ?>
-<? } else { ?>
-    <img src="<?= 'http://' . $_SERVER['SERVER_NAME'] .  $_SERVER['SCRIPT_NAME'] . '?' . criteria_string($criteria) ?>&select=content&select_id=<?= $content->id ?>&format=raw" alt="<?= htmlspecialchars($content->name) ?>" />
-<? } ?>
-<?
+<?php if(false===strpos($content->mime_type,'image')){ ?>
+    <?php echo $content->content ?>
+<?php } else { ?>
+    <img src="<?php echo 'http://' . $_SERVER['SERVER_NAME'] .  $_SERVER['SCRIPT_NAME'] . '?' . criteria_string($criteria) ?>&select=content&select_id=<?php echo $content->id ?>&format=raw" alt="<?php echo htmlspecialchars($content->name) ?>" />
+<?php } ?>
+<?php
     }
 }
 
@@ -222,23 +222,23 @@ function render_rss($content_arr, $criteria){
 ?>
 <rss version="2.0" xmlns:media="http://search.yahoo.com/mrss/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
-        <title><?= htmlspecialchars(utf8_encode($feed_title)) ?></title>
-        <link>http://<?= $_SERVER['SERVER_NAME'] ?>/<?= ROOT_URL ?></link>
+        <title><?php echo htmlspecialchars(utf8_encode($feed_title)) ?></title>
+        <link>http://<?php echo $_SERVER['SERVER_NAME'] ?>/<?php echo ROOT_URL ?></link>
         <description>RSS Feed from Concerto API</description>
         <language>en-us</language>
-        <pubDate><?= rssdate("now") ?></pubDate>
+        <pubDate><?php echo rssdate("now") ?></pubDate>
         <generator>Concerto API 0.08</generator>
-        <webMaster><?= SYSTEM_EMAIL ?> (Concerto Digital Signage)</webMaster>
-        <atom:link href="<?= 'http://' . $_SERVER['SERVER_NAME'] . htmlspecialchars($_SERVER['REQUEST_URI']) ?>" rel="self" type="application/rss+xml" />
+        <webMaster><?php echo SYSTEM_EMAIL ?> (Concerto Digital Signage)</webMaster>
+        <atom:link href="<?php echo 'http://' . $_SERVER['SERVER_NAME'] . htmlspecialchars($_SERVER['REQUEST_URI']) ?>" rel="self" type="application/rss+xml" />
         <image>
-            <url><?= 'http://' . $_SERVER['SERVER_NAME'] . ADMIN_BASE_URL ?>/images/concerto_48x48.png</url>
-            <title><?= htmlspecialchars(utf8_encode($feed_title)) ?></title>
-            <link>http://<?= $_SERVER['SERVER_NAME'] ?>/<?= ROOT_URL ?></link>
+            <url><?php echo 'http://' . $_SERVER['SERVER_NAME'] . ADMIN_BASE_URL ?>/images/concerto_48x48.png</url>
+            <title><?php echo htmlspecialchars(utf8_encode($feed_title)) ?></title>
+            <link>http://<?php echo $_SERVER['SERVER_NAME'] ?>/<?php echo ROOT_URL ?></link>
             <width>48</width>
             <height>48</height>
         </image>
 
-<? 
+<?php 
  /*Sometimes, including the 'index.php' portion of the URL breaks clients like the built-in OS X screensaver.
   *By removing the reference to index.php, the screensaver doesn't know what to expect, and works.
   *This has taken multiple months to find.
@@ -265,40 +265,40 @@ function render_rss($content_arr, $criteria){
         }
 ?>
         <item>
-            <title><?= htmlspecialchars($content->name) ?></title>
-            <link><?= $link ?></link>
-            <description><?= $desc ?></description>
-            <pubDate><?= rssdate($content->submitted) ?></pubDate>
-            <author><?= $user->username ?>@rpi.edu (<?= htmlspecialchars(utf8_encode($user->name)) ?>)</author>
-            <guid isPermaLink="false"><?= 'http://' . $_SERVER['SERVER_NAME'] . ADMIN_URL ?>/content/show/<?= $content->id ?></guid>
-<?          foreach($feeds as $feed_obj){
+            <title><?php echo htmlspecialchars($content->name) ?></title>
+            <link><?php echo $link ?></link>
+            <description><?php echo $desc ?></description>
+            <pubDate><?php echo rssdate($content->submitted) ?></pubDate>
+            <author><?php echo $user->username ?>@rpi.edu (<?php echo htmlspecialchars(utf8_encode($user->name)) ?>)</author>
+            <guid isPermaLink="false"><?php echo 'http://' . $_SERVER['SERVER_NAME'] . ADMIN_URL ?>/content/show/<?php echo $content->id ?></guid>
+<?php          foreach($feeds as $feed_obj){
                 if($feed_obj['moderation_flag'] == 1 && $feed_obj['feed']->type != 3){
                     $feed = $feed_obj['feed'];
                     $feed_link = 'http://' . $_SERVER['SERVER_NAME'] .  $_SERVER['SCRIPT_NAME'] . '?' . criteria_string($criteria) . "&select=feed&select_id={$feed->id}&format=rss";
 ?>
-            <category domain="<?= htmlspecialchars($feed_link) ?>"><?= htmlspecialchars($feed->name) ?></category>
-<?
+            <category domain="<?php echo htmlspecialchars($feed_link) ?>"><?php echo htmlspecialchars($feed->name) ?></category>
+<?php
                 }
             }
             if(strpos($content->mime_type,'image') !== false){
 ?>
-            <enclosure url="<?= htmlspecialchars($raw_link) ?>" type="<?= $content->mime_type ?>" length='0'/>
-            <media:content url="<?= htmlspecialchars($raw_link) ?>" type="<?= $content->mime_type ?>" expression="full" />
-            <media:title type="plain"><?= htmlspecialchars($content->name) ?></media:title>
-            <media:thumbnail url="<?= htmlspecialchars($rss_link) ?>" width="100" height="100"/>
-<?
+            <enclosure url="<?php echo htmlspecialchars($raw_link) ?>" type="<?php echo $content->mime_type ?>" length='0'/>
+            <media:content url="<?php echo htmlspecialchars($raw_link) ?>" type="<?php echo $content->mime_type ?>" expression="full" />
+            <media:title type="plain"><?php echo htmlspecialchars($content->name) ?></media:title>
+            <media:thumbnail url="<?php echo htmlspecialchars($rss_link) ?>" width="100" height="100"/>
+<?php
             }
 ?>
             <dcterms:valid>
-                start=<?= w3date($content->start_time) ?>;
-                end=<?= w3date($content->end_time) ?>;
+                start=<?php echo w3date($content->start_time) ?>;
+                end=<?php echo w3date($content->end_time) ?>;
                 scheme=W3C-DTF
             </dcterms:valid>
         </item>
-<?  } ?>
+<?php  } ?>
     </channel>
 </rss>
-<?
+<?php
 }
 
 function render_raw($content_arr, $criteria){
@@ -383,35 +383,35 @@ function system_info(){
 
 <systeminfo>
   <feeds>
-<?
+<?php
     while($row = sql_row_keyed($res, $i)){
 ?>
     <feed>
-        <id><?= $row['id'] ?></id>
-        <name><?= htmlspecialchars($row['name']) ?></name>
+        <id><?php echo $row['id'] ?></id>
+        <name><?php echo htmlspecialchars($row['name']) ?></name>
     </feed>
-<?
+<?php
         $i++;
     }
 ?>
   </feeds>
-<?
+<?php
     $sql = "SELECT name FROM type";
     $res = sql_query($sql);
     $i = 0;
 ?>
   <types>
-<?
+<?php
     while($row = sql_row_keyed($res, $i)){
 ?>
-    <type><?= htmlspecialchars($row['name']) ?></type>
-<?
+    <type><?php echo htmlspecialchars($row['name']) ?></type>
+<?php
         $i++;
     }
 ?>
   </types>
 </systeminfo>
-<?
+<?php
 }
 
 //Function to generate W3-DTF friendly date.  Complies with some RFC

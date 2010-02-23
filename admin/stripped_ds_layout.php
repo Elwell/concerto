@@ -29,20 +29,20 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
 <title><?php echo join(' - ',array($this->getTitle(), 'Concerto Panel'));?></title>
-<link rel="stylesheet" type="text/css" href="<?=ADMIN_BASE_URL?>css/wall.css" />
-<link rel="stylesheet" type="text/css" href="<?=ADMIN_BASE_URL?>css/ui.theme.css" />
-<link rel="stylesheet" type="text/css" href="<?=ADMIN_BASE_URL?>css/ui.core.css" />
+<link rel="stylesheet" type="text/css" href="<?php echo ADMIN_BASE_URL?>css/wall.css" />
+<link rel="stylesheet" type="text/css" href="<?php echo ADMIN_BASE_URL?>css/ui.theme.css" />
+<link rel="stylesheet" type="text/css" href="<?php echo ADMIN_BASE_URL?>css/ui.core.css" />
 
-<script type="text/javascript" src="<?=ADMIN_BASE_URL?>js/jquery.js"></script>
-<script type="text/javascript" src="<?=ADMIN_BASE_URL?>js/jquery.tools.min.js"></script>
-<script type="text/javascript" src="<?=ADMIN_BASE_URL?>js/ui.progressbar-custom.min.js"></script>
+<script type="text/javascript" src="<?php echo ADMIN_BASE_URL?>js/jquery.js"></script>
+<script type="text/javascript" src="<?php echo ADMIN_BASE_URL?>js/jquery.tools.min.js"></script>
+<script type="text/javascript" src="<?php echo ADMIN_BASE_URL?>js/ui.progressbar-custom.min.js"></script>
 
-<meta name="generator" content="Concerto <?= CONCERTO_VERSION ?>">
+<meta name="generator" content="Concerto <?php echo CONCERTO_VERSION ?>">
 <meta name="application-name" content="Concerto"/>
 <meta name="description" content="RPI Digital Signage for Everyone."/>
-<meta name="application-url" content="http://<?=$_SERVER['SERVER_NAME'] . ADMIN_URL?>"/>
-<link rel="icon" href="<?=ADMIN_BASE_URL?>images/concerto_32x32.png" sizes="32x32"/>
-<link rel="icon" href="<?=ADMIN_BASE_URL?>images/concerto_48x48.png" sizes="48x48"/>
+<meta name="application-url" content="http://<?php echo $_SERVER['SERVER_NAME'] . ADMIN_URL?>"/>
+<link rel="icon" href="<?php echo ADMIN_BASE_URL?>images/concerto_32x32.png" sizes="32x32"/>
+<link rel="icon" href="<?php echo ADMIN_BASE_URL?>images/concerto_48x48.png" sizes="48x48"/>
 
 <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
 
@@ -63,7 +63,7 @@ var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "htt
 document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
 </script>
 <script type="text/javascript">
-var pageTracker = _gat._getTracker("<?= GA_TRACKING ?>");
+var pageTracker = _gat._getTracker("<?php echo GA_TRACKING ?>");
 pageTracker._trackPageview();
 </script>
 <?php } ?>

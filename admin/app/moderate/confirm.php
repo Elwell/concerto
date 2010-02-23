@@ -23,34 +23,34 @@
  * @license      GPLv2, see www.gnu.org/licenses/gpl-2.0.html
  * @version      $Revision$
  */
-?><form action="<?=ADMIN_URL?>/moderate/post" method="post">
-<input type="hidden" name="feed_id" value="<?=$this->feed->id?>" />
-<input type="hidden" name="content_id" value="<?=$this->content->id?>" />
-<input type="hidden" name="action" value="<?=$this->args[1]?>" />
-<? if($this->args[1]=="approve") { ?>
+?><form action="<?php echo ADMIN_URL?>/moderate/post" method="post">
+<input type="hidden" name="feed_id" value="<?php echo $this->feed->id?>" />
+<input type="hidden" name="content_id" value="<?php echo $this->content->id?>" />
+<input type="hidden" name="action" value="<?php echo $this->args[1]?>" />
+<?php if($this->args[1]=="approve") { ?>
 <h1>Duration:</h1>
-<p><span class="mod_confirm" title="Duration (seconds)"><input type="text" name="duration" value="<?=$this->content->get_duration($this->feed)/1000?>" size="2" /></span></p>
-<? } else { ?>
+<p><span class="mod_confirm" title="Duration (seconds)"><input type="text" name="duration" value="<?php echo $this->content->get_duration($this->feed)/1000?>" size="2" /></span></p>
+<?php } else { ?>
 <h1>Reason for Rejection:</h1>
 <p>
 <select name="information">
-<?
+<?php
 $choices = array("Your content is not applicable to my feed.",
                  "Your content is too hard to read.",
                  "Your content is redundant.",
                  "Your content is inappropriate.");
 foreach($choices as $choice) {
 ?>
-<option value="<?= $choice ?>"><?= $choice ?></option>
-<? } ?>
+<option value="<?php echo $choice ?>"><?php echo $choice ?></option>
+<?php } ?>
 </select>
 </p>
-<? } ?>
+<?php } ?>
 <h1>Additional Message to Send to Submitter:</h1>
 <p><textarea name="notification" rows="3" cols="30"></textarea></p>
-<? if($this->args[4] != "ajax") { ?>
+<?php if($this->args[4] != "ajax") { ?>
 <input type="submit" value="Submit" />
-<? } else { ?>
+<?php } else { ?>
 <input type="hidden" name="ajax" value="1" />
-<? } ?>
+<?php } ?>
 </form>

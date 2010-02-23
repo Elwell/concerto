@@ -27,19 +27,19 @@
 
 	<div id="fp_stripe">
 		<div id="fp_stripe_padding">
-			<h1><a href="<?= ADMIN_URL ?>/wall/">View More Live Content</a></h1>
+			<h1><a href="<?php echo ADMIN_URL ?>/wall/">View More Live Content</a></h1>
 			<h2>on the Concerto Wall</h2>
 		</div>
 	</div>
-	<div id="fp_display" style="top:85px;"><img src="<?= ADMIN_BASE_URL ?>/images/fp/fp_display_static.jpg" alt="" /></div>
+	<div id="fp_display" style="top:85px;"><img src="<?php echo ADMIN_BASE_URL ?>/images/fp/fp_display_static.jpg" alt="" /></div>
 	<div style="padding-left:0px;padding-top:440px;">
 		<div class="roundcont">
-		  <div class="roundtop"><span class="rt"><img src="<?= ADMIN_BASE_URL ?>/images/blsp.gif" height="6" width="1" alt="" /></span></div>
+		  <div class="roundtop"><span class="rt"><img src="<?php echo ADMIN_BASE_URL ?>/images/blsp.gif" height="6" width="1" alt="" /></span></div>
 		  <div class="roundcont_main">
 		    <h1>This is digital signage for everyone.</h1>
 		    <p>Concerto is a free, Web-based broadcast medium for digital announcements that just works. Using Concerto, it's easy to engage large communities of people with graphical and text-based flyers, alerts, and other messages.</p>
 		  </div>
-		  <div class="roundbottom"><span class="rb"><img src="<?= ADMIN_BASE_URL ?>/images/blsp.gif" height="6" width="1" alt="" /></span></div>
+		  <div class="roundbottom"><span class="rb"><img src="<?php echo ADMIN_BASE_URL ?>/images/blsp.gif" height="6" width="1" alt="" /></span></div>
 		</div>
 
 		<div style="clear:both;"></div>

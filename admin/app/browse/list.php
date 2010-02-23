@@ -26,24 +26,24 @@
 ?>
 
 <div class="roundcont">
-  <div class="roundtop"><span class="rt"><img src="<? echo ADMIN_BASE_URL ?>/images/blsp.gif" height="6" width="1" alt="" /></span></div>
+  <div class="roundtop"><span class="rt"><img src="<?php echo ADMIN_BASE_URL ?>/images/blsp.gif" height="6" width="1" alt="" /></span></div>
   <div class="roundcont_main">
     <div style="float:left; width:65%;">
-    	<a href="<?= ADMIN_URL ?>/wall"><img border="0" src="<?= ADMIN_BASE_URL ?>/images/wall/wall-words.gif" alt="" /></a>
+    	<a href="<?php echo ADMIN_URL ?>/wall"><img border="0" src="<?php echo ADMIN_BASE_URL ?>/images/wall/wall-words.gif" alt="" /></a>
     	<br /><br />
-    	<p><a href="<?= ADMIN_URL ?>/wall">Concerto Wall</a> is an interactive feature that allows you to view live graphical Concerto content.  Visit the Wall now to peruse live content in a completely new way!</p>
+    	<p><a href="<?php echo ADMIN_URL ?>/wall">Concerto Wall</a> is an interactive feature that allows you to view live graphical Concerto content.  Visit the Wall now to peruse live content in a completely new way!</p>
     </div>
-    <div style="float:right; text-align:right; width:33%;"><a href="<?= ADMIN_URL ?>/wall"><img src="<?= ADMIN_BASE_URL ?>/images/wall/wall-announce.jpg" border="0" alt="" /></a></div>
+    <div style="float:right; text-align:right; width:33%;"><a href="<?php echo ADMIN_URL ?>/wall"><img src="<?php echo ADMIN_BASE_URL ?>/images/wall/wall-announce.jpg" border="0" alt="" /></a></div>
     <div style="clear:both;"></div>
   </div>
-  <div class="roundbottom"><span class="rb"><img src="<? echo ADMIN_BASE_URL ?>/images/blsp.gif" height="6" width="1" alt="" /></span></div>
+  <div class="roundbottom"><span class="rb"><img src="<?php echo ADMIN_BASE_URL ?>/images/blsp.gif" height="6" width="1" alt="" /></span></div>
 </div>
 
 <?php if(isAdmin()) { ?>
-<a href="<?=ADMIN_URL.'/feeds/new' ?>"><span class="buttonsel"><div class="buttonleft"><img src="<?= ADMIN_BASE_URL ?>/images/buttonsel_left.gif" border="0" alt="" /></div><div class="buttonmid"><div class="buttonmid_padding">New Feed</div></div><div class="buttonright"><img src="<?= ADMIN_BASE_URL ?>/images/buttonsel_right.gif" border="0" alt="" /></div></span></a>
-<? } else { ?>
-<a href="<?=ADMIN_URL.'/feeds/request' ?>"><span class="buttonsel"><div class="buttonleft"><img src="<?= ADMIN_BASE_URL ?>/images/buttonsel_left.gif" border="0" alt="" /></div><div class="buttonmid"><div class="buttonmid_padding">Request a Feed</div></div><div class="buttonright"><img src="<?= ADMIN_BASE_URL ?>/images/buttonsel_right.gif" border="0" alt="" /></div></span></a>
-<? } ?>
+<a href="<?php echo ADMIN_URL.'/feeds/new' ?>"><span class="buttonsel"><div class="buttonleft"><img src="<?php echo ADMIN_BASE_URL ?>/images/buttonsel_left.gif" border="0" alt="" /></div><div class="buttonmid"><div class="buttonmid_padding">New Feed</div></div><div class="buttonright"><img src="<?php echo ADMIN_BASE_URL ?>/images/buttonsel_right.gif" border="0" alt="" /></div></span></a>
+<?php } else { ?>
+<a href="<?php echo ADMIN_URL.'/feeds/request' ?>"><span class="buttonsel"><div class="buttonleft"><img src="<?php echo ADMIN_BASE_URL ?>/images/buttonsel_left.gif" border="0" alt="" /></div><div class="buttonmid"><div class="buttonmid_padding">Request a Feed</div></div><div class="buttonright"><img src="<?php echo ADMIN_BASE_URL ?>/images/buttonsel_right.gif" border="0" alt="" /></div></span></a>
+<?php } ?>
 <div style="clear:both;height:6px;"></div>
 
 <?php
@@ -64,8 +64,8 @@ $feed_keys = array($public_feed, $restrict_feed, $private_feed);
 foreach($feed_keys as $feed_key){
     if(count($this->feeds[$feed_key['key']]) > 0){
 ?>
-<h4 class="browseh"><?=$feed_key['name']?></h4>
-<p class="browsep"><?=$feed_key['desc']?></p>
+<h4 class="browseh"><?php echo $feed_key['name']?></h4>
+<p class="browsep"><?php echo $feed_key['desc']?></p>
 <table class="edit_win" cellpadding="0" cellspacing="0">
 <?php
 
@@ -75,11 +75,11 @@ foreach($this->feeds[$feed_key['key']] as $feed) {
     if($types == false) $types = array();
 ?>
 	<tr>
-    <td style="padding-bottom:0px !important;"><h1><a style="color:#000 !important;" href="<?= ADMIN_URL?>/browse/feed/<?= $feed->id ?>"><?= htmlspecialchars($feed->name) ?> Feed</a></h1></td>
-    <td style="padding-bottom:0px !important;"><h4>Moderated by <? $group = new Group($feed->group_id) ?><a href="<?= ADMIN_URL ?>/groups/show/<?= $group->id ?>"><?= $group->name ?></a></h4></td>
+    <td style="padding-bottom:0px !important;"><h1><a style="color:#000 !important;" href="<?php echo ADMIN_URL?>/browse/feed/<?php echo $feed->id ?>"><?php echo htmlspecialchars($feed->name) ?> Feed</a></h1></td>
+    <td style="padding-bottom:0px !important;"><h4>Moderated by <?php $group = new Group($feed->group_id) ?><a href="<?php echo ADMIN_URL ?>/groups/show/<?php echo $group->id ?>"><?php echo $group->name ?></a></h4></td>
 	</tr>
 	<tr>
-		<td class="merged" colspan="2"><p><b><?= $feed->description ?></b></p></td>
+		<td class="merged" colspan="2"><p><b><?php echo $feed->description ?></b></p></td>
 	</tr>
 	<tr>
 		<td class="merged" colspan="2">
@@ -98,12 +98,12 @@ foreach($this->feeds[$feed_key['key']] as $feed) {
       ?>
     </td>
 	</tr>
-<? } ?>
+<?php } ?>
 </table>
 <br />
-<?
+<?php
     }
 }
 ?>
 <div style="clear:left"></div><br/><br/>
-<h2>Would you like to see a feed for another category of content? <a href="<?=ADMIN_URL.'/feeds/request' ?>">Request a feed</a> today!</h2>
+<h2>Would you like to see a feed for another category of content? <a href="<?php echo ADMIN_URL.'/feeds/request' ?>">Request a feed</a> today!</h2>

@@ -25,7 +25,7 @@
  */
 ?><h3>Please fill out all fields to create a new screen.<h3>
 
-<form method="POST" action="<?=ADMIN_URL?>/screens/livecdcreate">
+<form method="POST" action="<?php echo ADMIN_URL?>/screens/livecdcreate">
 <!-- Beginning Screen Form -->
 <?php
 
@@ -48,7 +48,7 @@
 <h3>Create a LiveCD Screen</h3>
 <br />
 <div style="text-align:center; width:28%; float:left;">
-	<img src="<?=ADMIN_BASE_URL?>/images/<?echo $scrimg?>" height="150" style="margin-right:15px !important;" alt="" />
+	<img src="<?php echo ADMIN_BASE_URL?>/images/<?php echo $scrimg?>" height="150" style="margin-right:15px !important;" alt="" />
 </div>
 <div style="clear:none; width:70%; float:right;">
 	<table style="clear:none;" class='edit_win' cellpadding='6' cellspacing='0'>
@@ -67,14 +67,14 @@
 		<tr>
 			<td><h5>Screen Size<br />(W x H, in pixels)</h5></td>
 			<td>
-				<input type="text" id="width" tabindex="3" name="screen[width]" size="6" value="<?=$this->livecd['width']?>">&nbsp; x &nbsp;
-				<input type="text" id="height" tabindex="4" name="screen[height]" size="6" value="<?=$this->livecd['height']?>">
+				<input type="text" id="width" tabindex="3" name="screen[width]" size="6" value="<?php echo $this->livecd['width']?>">&nbsp; x &nbsp;
+				<input type="text" id="height" tabindex="4" name="screen[height]" size="6" value="<?php echo $this->livecd['height']?>">
 			</td>
 		</tr>
 		<tr>
 			<td><h5>MAC Address</h5></td>
 			<td>
-				<input type="hidden" id="mac_inhex" name="screen[mac_inhex]" value="<?= $this->livecd['mac'] ?>"><?= $this->livecd['mac'] ?>
+				<input type="hidden" id="mac_inhex" name="screen[mac_inhex]" value="<?php echo $this->livecd['mac'] ?>"><?php echo $this->livecd['mac'] ?>
 			</td>
 		</tr>
 		<tr>
@@ -84,7 +84,7 @@
 							 if(is_array($this->groups))
 								 foreach($this->groups as $group) {
 				 ?>
-						<option value="<?= $group->id ?>"><?= $group->name ?></option>
+						<option value="<?php echo $group->id ?>"><?php echo $group->name ?></option>
 				 <?php   } ?>
 				 </select></td>
 		</tr>
@@ -93,5 +93,5 @@
 <br clear="all" />
 <!-- End Live CD Form -->
 
-<input value="Create Screen" type="submit" name="submit" <? if($this->nogroups) echo "disabled=disabled"; ?>/>
+<input value="Create Screen" type="submit" name="submit" <?php if($this->nogroups) echo "disabled=disabled"; ?>/>
 </form>

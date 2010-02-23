@@ -25,7 +25,7 @@
  */
 ?><h3>Please upload a template file and the descriptor file to add a new template.</h3>
 
-<form enctype="multipart/form-data" method="POST" action="<?=ADMIN_URL?>/frontpage/createtemplate">
+<form enctype="multipart/form-data" method="POST" action="<?php echo ADMIN_URL?>/frontpage/createtemplate">
 <!-- Beginning Template Form -->
      <table style="clear:none" class='edit_win' cellpadding='6' cellspacing='0'>
        <tr> 

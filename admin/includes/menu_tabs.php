@@ -31,18 +31,18 @@
 	if(isLoggedIn()) { //We will change this!
 	?>
 	  <ul>
-	    <li><a href="<?= ADMIN_URL ?>/frontpage/dashboard" title="Dashboard"><span>Dashboard</span></a></li>
-	    <li><a style="margin-left:12px;" href="<?= ADMIN_URL ?>/content/new" title="Add new content to the system"><span>Add Content</span></a></li>
-	    <li><a href="<?= ADMIN_URL ?>/browse/" title="Browse all content in the system, sorted by feed"><span>Browse Content</span></a></li>
-	    <li><a style="margin-left:12px" href="<?= ADMIN_URL ?>/screens/" title="View and Edit Concerto Screens"><span>Screens</span></a></li>
-	<?  if($controlsstuff) { ?>
-	    <li><a style="margin-left:12px;" href="<?= ADMIN_URL ?>/users/" title="Browse and edit user profiles"><span>Users</span></a></li>
-	<?  } ?>
-	    <li><a<?=!$controlsstuff?' style="margin-left:12px;"':''?> href="<?= ADMIN_URL ?>/groups/" title="Browse and user groups"><span>User Groups</span></a></li>
-	<? if(isAdmin()){ ?>
-	    <li><a style="margin-left:12px;" href="<?= ADMIN_URL ?>/frontpage/admin" title=""><span>Admin</span></a></li>
-	    <li><a href="<?= ADMIN_URL ?>/pages" title="Manage informational content pages"><span>Info Pages</span></a></li>
-	<? } ?>
+	    <li><a href="<?php echo ADMIN_URL ?>/frontpage/dashboard" title="Dashboard"><span>Dashboard</span></a></li>
+	    <li><a style="margin-left:12px;" href="<?php echo ADMIN_URL ?>/content/new" title="Add new content to the system"><span>Add Content</span></a></li>
+	    <li><a href="<?php echo ADMIN_URL ?>/browse/" title="Browse all content in the system, sorted by feed"><span>Browse Content</span></a></li>
+	    <li><a style="margin-left:12px" href="<?php echo ADMIN_URL ?>/screens/" title="View and Edit Concerto Screens"><span>Screens</span></a></li>
+	<?php  if($controlsstuff) { ?>
+	    <li><a style="margin-left:12px;" href="<?php echo ADMIN_URL ?>/users/" title="Browse and edit user profiles"><span>Users</span></a></li>
+	<?php  } ?>
+	    <li><a<?php echo !$controlsstuff?' style="margin-left:12px;"':''?> href="<?php echo ADMIN_URL ?>/groups/" title="Browse and user groups"><span>User Groups</span></a></li>
+	<?php if(isAdmin()){ ?>
+	    <li><a style="margin-left:12px;" href="<?php echo ADMIN_URL ?>/frontpage/admin" title=""><span>Admin</span></a></li>
+	    <li><a href="<?php echo ADMIN_URL ?>/pages" title="Manage informational content pages"><span>Info Pages</span></a></li>
+	<?php } ?>
 	  </ul>
 	<?php
 	} else {

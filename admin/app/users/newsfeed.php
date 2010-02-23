@@ -29,7 +29,7 @@ $(function()
    $("#news_expand").data('items',5);
    
    $("#news_expand").click(function(event) {
-         $.post("<?= ADMIN_URL ?>/users/notifications", {'start': $("#news_expand").data('items'), 'num': 5}, function(data) {
+         $.post("<?php echo ADMIN_URL ?>/users/notifications", {'start': $("#news_expand").data('items'), 'num': 5}, function(data) {
                var x = $("<div>"+data+"</div>");
                $("#news_expand").before(x.hide());
                x.slideDown("slow");
@@ -42,30 +42,30 @@ $(function()
 
 
 <div class="roundcont newsfeed">
-  <div class="roundtop"><span class="rt"><img src="<? echo ADMIN_BASE_URL ?>/images/blsp.gif" height="6" width="1" alt="" /></span></div>
+  <div class="roundtop"><span class="rt"><img src="<?php echo ADMIN_BASE_URL ?>/images/blsp.gif" height="6" width="1" alt="" /></span></div>
   <div class="roundcont_main">
     <div style="text-align:right; float:right; width:240px;">
-    <? $num = count($this->notifications) ?>
-   	<? if($this->page > 0) { ?>
-   		<a href="<?= ADMIN_URL ?>/users/newsfeed/<?= userName() ?>/0"><span class="buttonsel"><div class="buttonleft"><img src="<?= ADMIN_BASE_URL ?>/images/buttonsel_left.gif" border="0" alt="" /></div><div class="buttonmid"><div class="buttonmid_padding">|<</div></div><div class="buttonright" style="width:10px; padding-right:12px;"><img src="<?= ADMIN_BASE_URL ?>/images/buttonsel_right.gif" border="0" alt="" /></div></span></a>
-   	<? } ?>
-    <? if($this->page > 0) {?>
-			<a href="<?= ADMIN_URL ?>/users/newsfeed/<?= userName() ?>/<?= $this->page - 1?>"><span class="buttonsel"><div class="buttonleft"><img src="<?= ADMIN_BASE_URL ?>/images/buttonsel_left.gif" border="0" alt="" /></div><div class="buttonmid"><div class="buttonmid_padding"><<</div></div><div class="buttonright" style="width:10px; padding-right:12px;"><img src="<?= ADMIN_BASE_URL ?>/images/buttonsel_right.gif" border="0" alt="" /></div></span></a>
-    <? } ?>
-    <? if(($num>1) && $this->page < floor($this->notification_count / 25)) {?>
-			<a href="<?= ADMIN_URL ?>/users/newsfeed/<?= userName() ?>/<?= $this->page + 1?>"><span class="buttonsel"><div class="buttonleft"><img src="<?= ADMIN_BASE_URL ?>/images/buttonsel_left.gif" border="0" alt="" /></div><div class="buttonmid"><div class="buttonmid_padding">>></div></div><div class="buttonright" style="width:10px; padding-right:12px;"><img src="<?= ADMIN_BASE_URL ?>/images/buttonsel_right.gif" border="0" alt="" /></div></span></a>
-    <? } ?>
-   	<? if($this->page < $num && $this->page < floor($this->notification_count / 25)) { ?>
-   		<a href="<?= ADMIN_URL ?>/users/newsfeed/<?= userName() ?>/<?= floor($this->notification_count / 25) ?>"><span class="buttonsel"><div class="buttonleft"><img src="<?= ADMIN_BASE_URL ?>/images/buttonsel_left.gif" border="0" alt="" /></div><div class="buttonmid"><div class="buttonmid_padding">>|</div></div><div class="buttonright" style="width:10px; padding-right:12px;"><img src="<?= ADMIN_BASE_URL ?>/images/buttonsel_right.gif" border="0" alt="" /></div></span></a>
-   	<? } ?>
+    <?php $num = count($this->notifications) ?>
+   	<?php if($this->page > 0) { ?>
+   		<a href="<?php echo ADMIN_URL ?>/users/newsfeed/<?php echo userName() ?>/0"><span class="buttonsel"><div class="buttonleft"><img src="<?php echo ADMIN_BASE_URL ?>/images/buttonsel_left.gif" border="0" alt="" /></div><div class="buttonmid"><div class="buttonmid_padding">|<</div></div><div class="buttonright" style="width:10px; padding-right:12px;"><img src="<?php echo ADMIN_BASE_URL ?>/images/buttonsel_right.gif" border="0" alt="" /></div></span></a>
+   	<?php } ?>
+    <?php if($this->page > 0) {?>
+			<a href="<?php echo ADMIN_URL ?>/users/newsfeed/<?php echo userName() ?>/<?php echo $this->page - 1?>"><span class="buttonsel"><div class="buttonleft"><img src="<?php echo ADMIN_BASE_URL ?>/images/buttonsel_left.gif" border="0" alt="" /></div><div class="buttonmid"><div class="buttonmid_padding"><<</div></div><div class="buttonright" style="width:10px; padding-right:12px;"><img src="<?php echo ADMIN_BASE_URL ?>/images/buttonsel_right.gif" border="0" alt="" /></div></span></a>
+    <?php } ?>
+    <?php if(($num>1) && $this->page < floor($this->notification_count / 25)) {?>
+			<a href="<?php echo ADMIN_URL ?>/users/newsfeed/<?php echo userName() ?>/<?php echo $this->page + 1?>"><span class="buttonsel"><div class="buttonleft"><img src="<?php echo ADMIN_BASE_URL ?>/images/buttonsel_left.gif" border="0" alt="" /></div><div class="buttonmid"><div class="buttonmid_padding">>></div></div><div class="buttonright" style="width:10px; padding-right:12px;"><img src="<?php echo ADMIN_BASE_URL ?>/images/buttonsel_right.gif" border="0" alt="" /></div></span></a>
+    <?php } ?>
+   	<?php if($this->page < $num && $this->page < floor($this->notification_count / 25)) { ?>
+   		<a href="<?php echo ADMIN_URL ?>/users/newsfeed/<?php echo userName() ?>/<?php echo floor($this->notification_count / 25) ?>"><span class="buttonsel"><div class="buttonleft"><img src="<?php echo ADMIN_BASE_URL ?>/images/buttonsel_left.gif" border="0" alt="" /></div><div class="buttonmid"><div class="buttonmid_padding">>|</div></div><div class="buttonright" style="width:10px; padding-right:12px;"><img src="<?php echo ADMIN_BASE_URL ?>/images/buttonsel_right.gif" border="0" alt="" /></div></span></a>
+   	<?php } ?>
     </div>
-<? if ($num>0) { ?>
-    <h2>Showing items <?= $this->start+1 ?> to <?= $this->start + count($this->notifications) ?> of <?= $this->notification_count ?> total notifications</h2>
+<?php if ($num>0) { ?>
+    <h2>Showing items <?php echo $this->start+1 ?> to <?php echo $this->start + count($this->notifications) ?> of <?php echo $this->notification_count ?> total notifications</h2>
     <?php 
     if(is_array($this->notifications)) {
        foreach($this->notifications as $newsfeed) {
     ?>
-    	<p class="<?= $newsfeed->type ?>_<?= $newsfeed->msg ?>"><?= $newsfeed->text ?><span class="datesub"><?= date('M j', $newsfeed->timestamp) ?></span>
+    	<p class="<?php echo $newsfeed->type ?>_<?php echo $newsfeed->msg ?>"><?php echo $newsfeed->text ?><span class="datesub"><?php echo date('M j', $newsfeed->timestamp) ?></span>
         <?php
           if($newsfeed->has_extra){
             echo '<br/><span class="newsfeed_reason">'.$newsfeed->additional.'</span>';
@@ -75,9 +75,9 @@ $(function()
        }
     }
     ?>
-<? } else { ?>
+<?php } else { ?>
     <h2>No more items to display.</h2>
-<? } ?>
+<?php } ?>
   </div>
-  <div class="roundbottom"><span class="rb"><img src="<? echo ADMIN_BASE_URL ?>/images/blsp.gif" height="6" width="1" alt="" /></span></div>
+  <div class="roundbottom"><span class="rb"><img src="<?php echo ADMIN_BASE_URL ?>/images/blsp.gif" height="6" width="1" alt="" /></span></div>
 </div>

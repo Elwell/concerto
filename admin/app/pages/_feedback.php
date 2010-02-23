@@ -50,12 +50,12 @@ $(document).ready(function() {
 
   //Do the actual submit, output status.
   $('#feedback_form').submit(function() {
-     jQuery.post('<?=ADMIN_URL?>/pages/feedback', {
+     jQuery.post('<?php echo ADMIN_URL?>/pages/feedback', {
          'helpful': $('input[name=helpful]:checked').val(),
          'message': $('textarea[name=message]').val(),
          'email': $('input[name=email]').val(),
          'human': $('input[name=human]').val(),
-         'page_id': '<?=$this->page['id']?>',
+         'page_id': '<?php echo $this->page['id']?>',
          'submit': $('input[name=submit]').val()
        }, function(data) {
          $('#feedback_form').after(data+"<br/>");
@@ -71,7 +71,7 @@ $(document).ready(function() {
 		<h1>Was this information helpful?</h1>
 		<h2>Your input can help us improve the Concerto Support Center.</h2>
 		
-		<form id="feedback_form" method="POST" action="<?=ADMIN_URL?>/pages/feedback">
+		<form id="feedback_form" method="POST" action="<?php echo ADMIN_URL?>/pages/feedback">
 			<p id="feedback_helpful">
 				<input type="radio" name="helpful" value="1" id="feedback_yes">
 				<label for="helpful" id="feedback_yes_lbl">Yes</label>
@@ -82,17 +82,17 @@ $(document).ready(function() {
 			<p id="feedback_msg">
 				<label for="message">What can we do to improve this page?</label><br/>
 				<textarea cols="40" rows="4" name="message"></textarea><br/>
-		<? if(isLoggedIn()) { ?>
+		<?php if(isLoggedIn()) { ?>
 				<input type="hidden" name="email" value="" />
 				<input type="hidden" name="human" value="person" /><br/>
-		<? } else { ?>
+		<?php } else { ?>
 				<label for="email">Your Email: <em>(optional)</em></label><br />
 				<input type="text" name="email" value="" /><br/>
 				<label for="human">Are you a person or a robot?: <em>(please type 'person' or 'robot')</em></label><br />
 				<input type="text" name="human" value="" /><br/>
-		<? } ?>
+		<?php } ?>
 		
-				<input type="hidden" name="page_id" value="<?=$this->page['id']?>" />
+				<input type="hidden" name="page_id" value="<?php echo $this->page['id']?>" />
 				<input value="Submit Feedback" type="submit" name="submit" />
 			</p>
 		</form>

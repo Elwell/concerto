@@ -41,19 +41,19 @@
     <p>This page checks some system settings and configuration options to help judge if Concerto will work as intended.  It is by no means exhaustive or all inclusive.</p>
     <h1>PHP Enviroment</h1>
     <ul>
-      <li>PHP Version: <?= php_v(); ?></li>
-      <li>MySQL Support: <?= mysql_ext();?></li>
-      <li>GD Support: <?= gd_ext();?></li>
-      <li>JSON Support: <?= json_test();?></li>
-      <li>PATH INFO Global: <?= path_info(); ?></li>
+      <li>PHP Version: <?php echo php_v(); ?></li>
+      <li>MySQL Support: <?php echo mysql_ext();?></li>
+      <li>GD Support: <?php echo gd_ext();?></li>
+      <li>JSON Support: <?php echo json_test();?></li>
+      <li>PATH INFO Global: <?php echo path_info(); ?></li>
     </ul>
     <h1>Concerto Config</h1>
     <ul>
-      <li>Config access: <?= config_found(); ?></li><? include('../config.inc.php'); ?>
-      <li>Common Directory: <?= common_dir(); ?></li>
-      <li>Image Upload Directory: <?= image_dir(); ?></li>
-      <li>Template Upload Directory: <?= template_dir(); ?></li>
-      <li>MySQL Connection test: <?= test_mysql(); ?></li>
+      <li>Config access: <?php echo config_found(); ?></li><?php include('../config.inc.php'); ?>
+      <li>Common Directory: <?php echo common_dir(); ?></li>
+      <li>Image Upload Directory: <?php echo image_dir(); ?></li>
+      <li>Template Upload Directory: <?php echo template_dir(); ?></li>
+      <li>MySQL Connection test: <?php echo test_mysql(); ?></li>
     </ul>
   </body>
 </html>
