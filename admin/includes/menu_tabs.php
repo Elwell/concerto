@@ -3,8 +3,7 @@
  * This file was developed as part of the Concerto digital signage project
  * at RPI.
  *
- * Copyright (C) 2009 Rensselaer Polytechnic Institute
- * (Student Senate Web Technologies Group)
+ * Altered for use at CERN by Andrew Elwell
  *
  * This program is free software; you can redistribute it and/or modify it 
  * under the terms of the GNU General Public License as published by the Free
@@ -27,7 +26,7 @@
 <div id="tabs">
 	<div id="tabs-padding" class="tabs_bgimg">
 	<?php
-	$controlsstuff = isLoggedIn() && (isAdmin() || $_SESSION[user]->controls_afeed() || $_SESSION[user]->controls_ascreen());
+	$controlsstuff = isLoggedIn() && (isAdmin() || $_SESSION['user']->controls_afeed() || $_SESSION['user']->controls_ascreen());
 	if(isLoggedIn()) { //We will change this!
 	?>
 	  <ul>
@@ -47,8 +46,8 @@
 	<?php
 	} else {
 	?>
-		<h1 class="fp">Have an RCS ID and password?  If so, you can log into Concerto to the left.</h1>
-		<p>Concerto is 100% free to use for all current members of the campus community at <a href="http://rpi.edu">Rensselaer Polytechnic Institute</a>.</p>
+		<h1 class="fp">Click 'Log In' on the left to sign in with your <a href="http://cern.ch/">CERN</a> Login.</h1>
+		<p>Concerto is freely available for use and deployment around CERN, please contact <a href="http://cern.ch/aelwell">Andrew Elwell</a> for more information</p>
 	<?php 
 	}
 	?>

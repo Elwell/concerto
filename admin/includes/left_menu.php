@@ -46,7 +46,7 @@ src="<?php echo ADMIN_BASE_URL?>/images/conc_bluebg.gif" alt="Concerto" style=""
 	   	<a href="<?php echo ADMIN_URL ?>/users/show/<?php echo userName() ?>" title="View your profile and past submissions">
      <?php  if ( isAdmin() ) { ?>
          <img border="0" src="<?php echo ADMIN_BASE_URL ?>images/user_1337.gif" alt="" />
-           <?php } elseif ($_SESSION[user]->controls_afeed() || $_SESSION[user]->controls_ascreen()) { ?>
+           <?php } elseif ($_SESSION['user']->controls_afeed() || $_SESSION['user']->controls_ascreen()) { ?>
          <img border="0" src="<?php echo ADMIN_BASE_URL ?>images/user_admin.gif" alt="" />
            <?php } else { ?>
          <img border="0" src="<?php echo ADMIN_BASE_URL ?>images/user_basic.gif" alt="" /> 

@@ -101,12 +101,14 @@ class usersController extends Controller
    
    function signupAction()
    {
-      if(!phpCAS::isAuthenticated())
+      if(!$_SERVER['user'])
          redirect_to(ADMIN_URL.'/frontpage/login');
       if(isLoggedIn())
          redirect_to(ADMIN_URL.'/users/');
       $this->user = new User();
-      $this->user->username = phpCAS::getUser();
+      $this->user->username = $_SERVER['ADFS_LOGIN'];
+      $this->user->name = $_SERVER['ADFS_FULLNAME'];
+      $this->user->email = $_SERVER['ADFS_EMAIL'];
    }
 
    function newAction()
@@ -119,7 +121,7 @@ class usersController extends Controller
       $dat = $_POST['user'];
       $user = new User();
       
-      if(!phpCAS::isAuthenticated()) {
+      if(!$_SERVER['user']) {
          redirect_to(ADMIN_URL.'/users/signup');
          exit();
       }
@@ -133,7 +135,7 @@ class usersController extends Controller
             redirect_to(ADMIN_URL.'/users/new');
          }
       } else {
-         if($user->create_user(phpCAS::getUser(),$dat['name'],
+         if($user->create_user($_SERVER['ADFS_LOGIN'],$dat['name'],
                                $dat['email'],0,$dat['allow_email']=='allow'?1:0)) {
             $_SESSION['flash'][]=
                Array('info','Your profile was created successfully. Welcome to Concerto!');

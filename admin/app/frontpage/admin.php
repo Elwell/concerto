@@ -37,7 +37,7 @@
       $this->users=Array();
       if(is_array($userids))
          foreach($userids as $user) {
-            $user = new User($user[username]);
+            $user = new User($user['username']);
             echo '<option value="'.$user->username.'">'.$user->username.' - '.$user->name.'</option>';
          }
 

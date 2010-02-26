@@ -1,10 +1,6 @@
 <?php
 /**
- * This file was developed as part of the Concerto digital signage project
- * at RPI.
- *
- * Copyright (C) 2009 Rensselaer Polytechnic Institute
- * (Student Senate Web Technologies Group)
+ * Copyright (C) 2010 Andrew Elwell, CERN
  *
  * This program is free software; you can redistribute it and/or modify it 
  * under the terms of the GNU General Public License as published by the Free
@@ -18,30 +14,14 @@
  * of the GNU General Public License along with this program.
  *
  * @package      Concerto
- * @author       Web Technologies Group, $Author$
- * @copyright    Rensselaer Polytechnic Institute
+ * @author       CERN, $Author$
  * @license      GPLv2, see www.gnu.org/licenses/gpl-2.0.html
  * @version      $Revision$
  */
 
-/*Mike DiTore's CAS Login stuff
- *This allows CAS login functionality and is where all client interaction
- *takes place as far as login/logout/access control is concerned.
- *It should be included in every page that uses login.
- *
- *Nearing full functionality when used with the framework.
- *
- *last edited by mike, probably recently.
- */
 
-//Get and setup the CAS client
-include('CAS/CAS.php');
-phpCAS::client(CAS_VERSION_2_0,'login.rpi.edu',443,'/cas');
+// This replaces all the CAS stuff with checks that we're logged in with ADFS from CERN
 
-//the following functions are accessors to the login functionality
-//they are designed for use as "requirements" of site actions
-//should return true, or perform some action before returning;
-//false indicates an error.
 function check_login($callback)
 {
    if(isLoggedIn())
@@ -50,12 +30,6 @@ function check_login($callback)
    if($callback->controller == 'users' && $callback->action == 'create')
       return true;
 
-   //   if(phpCAS::isAuthenticated()) {
-   //    login_login();
-   //}
-
-   if(phpCAS::checkAuthentication())
-      login_login();
 }
 
 function require_login()
@@ -140,17 +114,14 @@ function login_logout()
    session_destroy();
    session_start();
    header("Cache-control: private"); // IE 6 Fix
-      phpCAS::logout();
+      redirect_to("https://login.cern.ch/adfs/ls/?wa=wsignout1.0");
 }
 
 function login_login()
 {
-   // force CAS authentication
-   phpCAS::forceAuthentication();
-
-   // at this step, the user has been authenticated by the CAS server
-   // and the user's login name can be read with phpCAS::getUser().   
-   $rcsid = phpCAS::getUser();
+   $_SESSION = array();
+   session_start();
+   $rcsid = $_SERVER['ADFS_LOGIN'];
 
    if(isset($_SESSION['su'])) {
       $rcsid=$_SESSION['su'];
