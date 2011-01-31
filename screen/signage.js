@@ -209,7 +209,7 @@
                     low = middle;
             }
 
-            //FUCKING UGLY...TAKE THIS SHIT OUT FOR GODS SAKE!!!
+            //Ugly code
             var font = parseInt((high + low) / 2);
             while($(this).height() > height){
                 $(this).css("font-size", --font);
