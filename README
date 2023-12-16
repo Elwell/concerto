@@ -1,3 +1,10 @@
+UPDATE December 2023
+I'm archiving off this repo - There are other, better toolkits for generating digital signage since the
+Raspberry pi came out, info-beamer being a good example. Upstream at RPI refactored their signage significantly
+since I used this. see them for more details if you want to use it. It was a student project so expect people
+involved to have moved on
+
+=====================================================================
 
                                Concerto
 
